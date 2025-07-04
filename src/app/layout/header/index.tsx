@@ -75,7 +75,7 @@ const Header = () => {
 					</div>
 				)}
 
-				<div className='container mx-auto px-4 lg:px-8'>
+				<div className='container-lg'>
 					<div className='flex items-center justify-between h-16 lg:h-20'>
 						{/* Logo */}
 						<div className='flex-shrink-0 z-10'>
