@@ -1,7 +1,16 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
 	images: {
-		domains: ['tintuc.lms360.vn'],
+		remotePatterns: [
+			{
+				protocol: 'https',
+				hostname: 'tintuc.lms360.vn',
+			},
+			{
+				protocol: 'http',
+				hostname: 'localhost',
+			},
+		],
 	},
 };
 

@@ -21,6 +21,7 @@ const ELearningBanner = () => {
 	const [mounted, setMounted] = useState(false);
 	const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
 	const containerRef = useRef<any>(null);
+	const videoRef = useRef<HTMLVideoElement>(null);
 
 	useEffect(() => {
 		setMounted(true);
@@ -74,12 +75,26 @@ const ELearningBanner = () => {
 	];
 
 	return (
-		<div
-			ref={containerRef}
-			className='relative bg-gradient-to-br from-slate-900 via-blue-900 to-indigo-900 overflow-hidden'
-		>
+		<div ref={containerRef} className='relative overflow-hidden'>
+			{/* Video Background */}
+			<video
+				ref={videoRef}
+				autoPlay
+				loop
+				muted
+				playsInline
+				className='absolute inset-0 w-full h-full object-cover z-0'
+			>
+				<source src='/videos/banner.mp4' type='video/mp4' />
+				{/* Fallback background for browsers that don't support video */}
+				<div className='absolute inset-0 bg-gradient-to-br from-slate-900 via-blue-900 to-indigo-900'></div>
+			</video>
+
+			{/* Video Overlay */}
+			<div className='absolute inset-0 bg-black/50 z-1'></div>
+
 			{/* Clean Background Effects */}
-			<div className='absolute inset-0'>
+			<div className='absolute inset-0 z-2'>
 				{/* Subtle Geometric Pattern */}
 				<div className='absolute inset-0 opacity-10'>
 					<div className='absolute top-20 left-20 w-64 h-64 border border-blue-400 rounded-full animate-pulse'></div>
@@ -107,7 +122,7 @@ const ELearningBanner = () => {
 			</div>
 
 			{/* Main Content */}
-			<div>
+			<div className='relative z-10'>
 				<div className='relative z-10 container-lg'>
 					<div className='grid lg:grid-cols-2 gap-16 items-center min-h-[90vh]'>
 						{/* Left Content */}

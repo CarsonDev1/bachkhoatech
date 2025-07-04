@@ -1,13 +1,46 @@
 'use client';
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { ArrowRight } from 'lucide-react';
 import Image from 'next/image';
 
 const StatsSection = () => {
 	const [mounted, setMounted] = useState(false);
+	const [isInView, setIsInView] = useState(false);
+
+	const sectionRef = useRef<HTMLDivElement>(null);
 
 	useEffect(() => {
 		setMounted(true);
+
+		// Intersection Observer to detect when section comes into view
+		const observer = new IntersectionObserver(
+			(entries) => {
+				entries.forEach((entry) => {
+					if (entry.isIntersecting) {
+						setIsInView(true);
+						// Optional: Unobserve after first intersection to run animation only once
+						// observer.unobserve(entry.target);
+					} else {
+						// Optional: Reset animation when out of view
+						// setIsInView(false);
+					}
+				});
+			},
+			{
+				threshold: 0.2, // Trigger when 20% of the section is visible
+				rootMargin: '0px 0px -100px 0px', // Start animation 100px before the section comes into view
+			}
+		);
+
+		if (sectionRef.current) {
+			observer.observe(sectionRef.current);
+		}
+
+		return () => {
+			if (sectionRef.current) {
+				observer.unobserve(sectionRef.current);
+			}
+		};
 	}, []);
 
 	const statsData = [
@@ -70,11 +103,15 @@ const StatsSection = () => {
 	];
 
 	return (
-		<div className='relative bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-100 py-16 px-4 overflow-hidden'>
+		<div
+			ref={sectionRef}
+			className='relative bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-100 py-16 px-4 overflow-hidden'
+		>
 			{/* Background Effects */}
 			<div className='absolute inset-0'>
 				{/* Floating Particles */}
 				{mounted &&
+					isInView &&
 					Array.from({ length: 15 }).map((_, i) => (
 						<div
 							key={i}
@@ -90,9 +127,21 @@ const StatsSection = () => {
 
 				{/* Geometric Patterns */}
 				<div className='absolute inset-0 opacity-5'>
-					<div className='absolute top-10 left-10 w-40 h-40 border-2 border-blue-400 rounded-lg animate-pulse rotate-12'></div>
-					<div className='absolute bottom-10 right-10 w-32 h-32 border-2 border-purple-400 rounded-lg animate-pulse delay-1000 -rotate-12'></div>
-					<div className='absolute top-1/3 right-1/4 w-20 h-20 border-2 border-cyan-400 rounded-lg animate-pulse delay-2000 rotate-45'></div>
+					<div
+						className={`absolute top-10 left-10 w-40 h-40 border-2 border-blue-400 rounded-lg rotate-12 transition-all duration-1000 ${
+							isInView ? 'animate-pulse' : 'opacity-0'
+						}`}
+					></div>
+					<div
+						className={`absolute bottom-10 right-10 w-32 h-32 border-2 border-purple-400 rounded-lg -rotate-12 transition-all duration-1000 delay-500 ${
+							isInView ? 'animate-pulse' : 'opacity-0'
+						}`}
+					></div>
+					<div
+						className={`absolute top-1/3 right-1/4 w-20 h-20 border-2 border-cyan-400 rounded-lg rotate-45 transition-all duration-1000 delay-1000 ${
+							isInView ? 'animate-pulse' : 'opacity-0'
+						}`}
+					></div>
 				</div>
 			</div>
 
@@ -101,7 +150,7 @@ const StatsSection = () => {
 				<div className='flex flex-col lg:flex-row lg:items-center lg:justify-between mb-12'>
 					<div
 						className={`mb-6 lg:mb-0 transform transition-all duration-1000 ${
-							mounted ? 'translate-y-0 opacity-100' : 'translate-y-4 opacity-0'
+							isInView ? 'translate-y-0 opacity-100' : 'translate-y-4 opacity-0'
 						}`}
 					>
 						<h2 className='text-2xl lg:text-3xl font-bold text-transparent bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text mb-2 uppercase'>
@@ -112,7 +161,7 @@ const StatsSection = () => {
 
 					<div
 						className={`transform transition-all duration-1000 delay-300 ${
-							mounted ? 'translate-y-0 opacity-100' : 'translate-y-4 opacity-0'
+							isInView ? 'translate-y-0 opacity-100' : 'translate-y-4 opacity-0'
 						}`}
 					>
 						<button className='group relative px-8 py-4 bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 text-white rounded-2xl font-bold text-lg transform transition-all duration-500 hover:scale-105 hover:rotate-1 shadow-2xl hover:shadow-blue-500/50 overflow-hidden'>
@@ -134,11 +183,10 @@ const StatsSection = () => {
 							<div
 								key={stat.id}
 								className={`group relative bg-white/90 backdrop-blur-sm rounded-3xl p-8 text-center shadow-xl hover:shadow-2xl transform transition-all duration-700 hover:scale-105 hover:-rotate-1 ${
-									mounted ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'
+									isInView ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'
 								}`}
 								style={{
-									animationDelay: `${stat.delay}ms`,
-									transitionDelay: `${index * 50}ms`,
+									transitionDelay: isInView ? `${stat.delay}ms` : '0ms',
 								}}
 							>
 								{/* Hover Gradient Overlay */}
