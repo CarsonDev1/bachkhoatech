@@ -1,0 +1,19 @@
+<svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="13 0 224 224">
+    <defs>
+        <style>
+            .cls-1{fill:none;}.cls-2{fill:#3d55a5;}.cls-3{fill:#ed1869;}.cls-4{fill:#18b575;}.cls-5{fill:#fdbc42;}.cls-6{fill:#fff;}</style>
+    </defs>
+    <rect class="cls-1" x="31.07" y="31.07" width="187.87" height="187.87" />
+    <g id="News">
+        <rect class="cls-2" x="59.07" y="53.47" width="131.77" height="101.89" rx="7.4" />
+        <path class="cls-3"
+            d="M173.2,157.3,59.05,182.54a7.41,7.41,0,0,1-8.85-5.61l-19-85a7.39,7.39,0,0,1,5.64-8.81L151,57.83a7.42,7.42,0,0,1,8.85,5.61l19,85A7.39,7.39,0,0,1,173.2,157.3Z" />
+        <path class="cls-4"
+            d="M179.7,192.82,70.38,151.46a7.38,7.38,0,0,1-4.3-9.53L95.27,65.39a7.41,7.41,0,0,1,9.56-4.28l109.32,41.35a7.38,7.38,0,0,1,4.3,9.53l-29.19,76.54A7.42,7.42,0,0,1,179.7,192.82Z" />
+        <rect class="cls-5" x="48.2" y="96.11" width="153.57" height="100.42" rx="7.4" />
+        <rect class="cls-6" x="124.95" y="116.26" width="62.18" height="7.85" rx="3.48" />
+        <rect class="cls-6" x="124.95" y="130.23" width="62.18" height="7.85" rx="3.48" />
+        <rect class="cls-6" x="124.95" y="144.21" width="62.18" height="7.85" rx="3.48" />
+        <rect class="cls-6" x="60.74" y="116.26" width="54.56" height="35.8" />
+    </g>
+</svg>

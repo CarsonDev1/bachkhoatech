@@ -1,0 +1,26 @@
+<svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="13 0 224 224">
+    <defs>
+        <style>
+            .cls-1{fill:none;}.cls-2{fill:#fbdeb1;}.cls-3{fill:#fdbc42;}.cls-4{fill:#ed1869;}.cls-5{fill:#3d55a5;}.cls-6{fill:#18b575;}.cls-7{fill:#fff;}</style>
+    </defs>
+    <rect class="cls-1" x="31.07" y="31.07" width="187.87" height="187.87" />
+    <g id="SLLDT">
+        <path class="cls-2"
+            d="M89.26,145.73h57.12v33H59.75a7.44,7.44,0,0,1-7.58-7.27V92.82a7.44,7.44,0,0,1,7.58-7.27H84.54v55.37A4.77,4.77,0,0,0,89.26,145.73Z" />
+        <path class="cls-2" d="M197.83,92.82v37H165.46V85.55h24.79A7.44,7.44,0,0,1,197.83,92.82Z" />
+        <path class="cls-2"
+            d="M197.83,133.78v37.64a7.44,7.44,0,0,1-7.58,7.27H150.3v-33h10.43a4.77,4.77,0,0,0,4.73-4.81v-7.14Z" />
+        <rect class="cls-3" x="81.74" y="189.65" width="86.58" height="12.31" rx="5.14" />
+        <rect class="cls-3" x="88.37" y="48.04" width="73.36" height="94.12" rx="5.2" />
+        <circle class="cls-4" cx="99.45" cy="56.23" r="3.12" />
+        <circle class="cls-5" cx="111.37" cy="56.23" r="3.12" />
+        <circle class="cls-6" cx="123.3" cy="56.23" r="3.12" />
+        <rect class="cls-2" x="96.34" y="106.1" width="53.21" height="3.88" />
+        <rect class="cls-2" x="96.34" y="117.17" width="59.38" height="3.88" />
+        <rect class="cls-2" x="96.34" y="128.23" width="41" height="3.88" />
+        <path id="SVGID" class="cls-7"
+            d="M123.3,67.34a6.15,6.15,0,1,0,6.14,6.15A6.15,6.15,0,0,0,123.3,67.34Z" />
+        <path class="cls-7"
+            d="M135.49,92c0,5.66-5.46,6.06-12.19,6.06s-12.2-.4-12.2-6.06,5.46-10.25,12.2-10.25S135.49,86.38,135.49,92Z" />
+    </g>
+</svg>

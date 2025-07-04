@@ -1,0 +1,16 @@
+<svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="13 0 224 224">
+    <defs>
+        <style>.cls-1{fill:none;}.cls-2{fill:#18b575;}.cls-3{fill:#fff;}.cls-4{fill:#fdbc42;}</style>
+    </defs>
+    <rect class="cls-1" x="31.07" y="31.07" width="187.87" height="187.87" />
+    <g id="Điểm_danh" data-name="Điểm danh">
+        <path class="cls-2"
+            d="M119.59,56.65H40.53a9.53,9.53,0,0,0-9.46,9.6v88.82a9.54,9.54,0,0,0,9.46,9.61H175.08a9.54,9.54,0,0,0,9.47-9.61V66.79a10.07,10.07,0,0,0-10-10.14Z" />
+        <rect class="cls-3" x="48.14" y="77.42" width="76.86" height="7.49" rx="3.47" />
+        <rect class="cls-3" x="48.14" y="91.2" width="76.86" height="7.49" rx="3.47" />
+        <path id="SVGID" class="cls-4"
+            d="M172.55,76.39a23.37,23.37,0,1,0,23.36,23.37A23.37,23.37,0,0,0,172.55,76.39Z" />
+        <path class="cls-4"
+            d="M218.93,170.31c0,21.53-20.76,23-46.38,23s-46.39-1.51-46.39-23,20.77-39,46.39-39S218.93,148.77,218.93,170.31Z" />
+    </g>
+</svg>

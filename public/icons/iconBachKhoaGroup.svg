@@ -1,0 +1,16 @@
+<svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="13 0 224 224">
+    <defs>
+        <style>.cls-1{fill:none;}.cls-2{fill:#d7def1;}.cls-3{fill:#3d55a5;}.cls-4{fill:#fff;}</style>
+    </defs>
+    <rect class="cls-1" x="31.07" y="31.07" width="187.87" height="187.87" />
+    <g id="Group_BK" data-name="Group BK">
+        <path class="cls-2"
+            d="M48.14,72.13V194.76L87.59,166H185a16.89,16.89,0,0,0,16.89-16.88v-77A16.89,16.89,0,0,0,185,55.24H65A16.89,16.89,0,0,0,48.14,72.13Z" />
+        <path class="cls-3"
+            d="M187.53,77.56v117.2l-32.17-28.71H70.55a8.38,8.38,0,0,1-8.37-8.38V77.56a8.38,8.38,0,0,1,8.37-8.38H179.16A8.38,8.38,0,0,1,187.53,77.56Z" />
+        <circle class="cls-2" cx="145.11" cy="115.16" r="10.69" />
+        <path class="cls-2" d="M162.76,143.81v-8.47a23.61,23.61,0,0,0-35.3,0v8.47Z" />
+        <circle class="cls-4" cx="110.7" cy="105.26" r="14.38" />
+        <path class="cls-4" d="M134.44,143.81v-11.4a31.76,31.76,0,0,0-47.49,0v11.4Z" />
+    </g>
+</svg>
