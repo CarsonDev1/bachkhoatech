@@ -1,12 +1,12 @@
 import type { Metadata } from 'next';
-import { Manrope } from 'next/font/google';
+import { Inter } from 'next/font/google';
 import './globals.css';
 import Header from '@/app/layout/header';
 import { Footer } from '@/app/layout/footer/Component';
 import ScrollToTop from '@/components/ui/scroll-to-top';
 
-const poppins = Manrope({
-	weight: ['400', '500', '600', '700', '800'],
+const poppins = Inter({
+	weight: ['400', '500', '600', '700', '800', '900', '100', '200', '300'],
 	subsets: ['latin'],
 });
 

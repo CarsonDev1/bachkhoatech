@@ -1,6 +1,7 @@
 import Banner from '@/app/components/banner';
 import LMSIntroSection from '@/app/components/intro';
 import NewsSection from '@/app/components/news';
+import Products from '@/app/components/products';
 import StatsSection from '@/app/components/stats';
 import TestimonialsSection from '@/app/components/testimonials';
 
@@ -11,7 +12,8 @@ export default function Home() {
 		<div className='min-h-screen bg-gray-50'>
 			<Banner />
 			<LMSIntroSection />
-			<NewsSection />
+			<Products />
+			{/* <NewsSection /> */}
 			<StatsSection />
 			<TestimonialsSection />
 		</div>

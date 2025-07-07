@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
-import { Menu, X, ChevronRight, Sparkles, Zap, Brain, Rocket } from 'lucide-react';
+import { Menu, X, ChevronDown } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
@@ -13,10 +13,10 @@ const Header = () => {
 	const pathname = usePathname();
 
 	const navItems = [
-		{ name: 'TRANG CHỦ', href: '/' },
-		{ name: 'GIỚI THIỆU', href: '/about' },
 		{ name: 'SẢN PHẨM', href: '/product' },
-		{ name: 'TIN TỨC', href: '/news' },
+		{ name: 'KHÁCH HÀNG', href: '/customer' },
+		{ name: 'TIN TỨC - TUYỂN DỤNG', href: '/news' },
+		{ name: 'ĐÀO TẠO NHÂN LỰC SỐ', href: '/training' },
 		{ name: 'LIÊN HỆ', href: '/contact' },
 	];
 
@@ -50,25 +50,22 @@ const Header = () => {
 	return (
 		<>
 			<header
-				className={`sticky w-full bg-slate-800 top-0 left-0 right-0 z-40 transition-all duration-500 ${
-					scrolled ? 'bg-slate-900/95 backdrop-blur-xl shadow-2xl' : 'bg-slate-800'
+				className={`fixed w-full top-0 left-0 right-0 z-40 transition-all duration-300  border-b border-white/10 ${
+					scrolled ? 'bg-slate-600 bg-opacity-80 backdrop-blur-sm shadow-lg' : 'bg-transparent'
 				}`}
 			>
-				{/* Gradient Border */}
-				<div className='absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-blue-500 to-transparent opacity-50'></div>
-
-				{/* Floating particles */}
+				{/* Background particles */}
 				{mounted && (
 					<div className='absolute inset-0 overflow-hidden'>
-						{Array.from({ length: 8 }).map((_, i) => (
+						{Array.from({ length: 20 }).map((_, i) => (
 							<div
 								key={i}
-								className='absolute w-1 h-1 bg-blue-400/30 rounded-full animate-pulse'
+								className='absolute w-1 h-1 bg-blue-300/30 rounded-full'
 								style={{
 									left: `${Math.random() * 100}%`,
 									top: `${Math.random() * 100}%`,
+									animation: `twinkle ${2 + Math.random() * 3}s ease-in-out infinite`,
 									animationDelay: `${Math.random() * 3}s`,
-									animationDuration: `${2 + Math.random() * 3}s`,
 								}}
 							/>
 						))}
@@ -79,43 +76,34 @@ const Header = () => {
 					<div className='flex items-center justify-between h-16 lg:h-20'>
 						{/* Logo */}
 						<div className='flex-shrink-0 z-10'>
-							<Link href='/' className='block group'>
+							<Link href='/' className='block'>
 								<div className='flex items-center space-x-3'>
 									<Image
 										src='/images/logo.png'
-										alt='logo'
+										alt='Bách Khoa Technology'
 										width={150}
-										height={150}
-										className='w-full h-full object-contain'
+										height={60}
+										className='h-14 w-auto object-contain'
 									/>
 								</div>
 							</Link>
 						</div>
 
 						{/* Desktop Navigation */}
-						<nav className='hidden lg:flex items-center space-x-8 xl:space-x-12'>
-							{navItems.map((item, index) => {
+						<nav className='hidden lg:flex items-center space-x-8'>
+							{navItems.map((item) => {
 								const isActive = isActiveItem(item.href);
 								return (
 									<Link
 										key={item.name}
 										href={item.href}
-										className={`relative text-sm xl:text-base font-semibold transition-all duration-300 group ${
-											isActive ? 'text-white' : 'text-gray-300 hover:text-white'
+										className={`relative text-sm md:text-base font-medium transition-all duration-300 hover:text-blue-200 ${
+											isActive ? 'text-white' : 'text-blue-100'
 										}`}
 									>
 										{item.name}
-
-										{/* Active/Hover indicator */}
-										<span
-											className={`absolute left-0 -bottom-2 h-0.5 bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 transition-all duration-300 ${
-												isActive ? 'w-full' : 'w-0 group-hover:w-full'
-											}`}
-										/>
-
-										{/* Glow effect */}
 										{isActive && (
-											<span className='absolute left-0 -bottom-2 h-0.5 w-full bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 blur-sm opacity-50'></span>
+											<span className='absolute left-0 -bottom-1 h-0.5 w-full bg-blue-300'></span>
 										)}
 									</Link>
 								);
@@ -123,26 +111,39 @@ const Header = () => {
 						</nav>
 
 						{/* CTA Button - Desktop */}
-						<div className='hidden lg:flex items-center space-x-4'>
+						<div className='hidden lg:flex items-center'>
 							<Link
-								href='https://lms360.vn/'
-								target='_blank'
-								rel='noopener noreferrer'
-								className='group relative px-6 py-3 bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 rounded-xl font-bold text-white text-sm transform transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-blue-500/50 overflow-hidden'
+								href='/product'
+								className='group flex items-center gap-2 px-6 py-2.5 bg-[#DDEFFB] text-[#19376B] font-semibold rounded-full hover:bg-[#4E87E9] hover:text-white transition-all duration-300 shadow-lg hover:shadow-xl'
 							>
-								<div className='absolute inset-0 bg-gradient-to-r from-blue-700 via-purple-700 to-pink-700 opacity-0 group-hover:opacity-100 transition-opacity duration-300'></div>
-								<div className='absolute inset-0 bg-white/10 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700 skew-x-12'></div>
-								<span className='relative z-10 flex items-center'>
-									<Rocket className='w-4 h-4 mr-2 group-hover:animate-bounce' />
-									Trải nghiệm ngay
-								</span>
+								<span>ĐĂNG KÝ DEMO</span>
+								<svg
+									xmlns='http://www.w3.org/2000/svg'
+									width={20}
+									height={20}
+									viewBox='0 0 20 20'
+									fill='none'
+									className='transition-all duration-300'
+								>
+									<path
+										d='M4.10742 15.8925C5.27285 17.0579 6.75771 17.8516 8.37422 18.1732C9.99074 18.4947 11.6663 18.3297 13.189 17.699C14.7118 17.0682 16.0133 16.0001 16.9289 14.6297C17.8446 13.2593 18.3334 11.6481 18.3334 9.99996C18.3334 8.35178 17.8446 6.74061 16.9289 5.37019C16.0133 3.99978 14.7118 2.93168 13.189 2.30095C11.6663 1.67023 9.99074 1.50521 8.37422 1.82676C6.75771 2.14832 5.27285 2.94201 4.10742 4.10746'
+										stroke='#19376B'
+										strokeWidth={2}
+										className='group-hover:stroke-white transition-all duration-300'
+									/>
+									<path
+										d='M12.4993 10L13.1493 9.47917L13.566 10L13.1493 10.5208L12.4993 10ZM2.49935 10.8333C2.27834 10.8333 2.06637 10.7455 1.91009 10.5893C1.75381 10.433 1.66602 10.221 1.66602 10C1.66602 9.77899 1.75381 9.56702 1.91009 9.41074C2.06637 9.25446 2.27834 9.16667 2.49935 9.16667V10.8333ZM9.81602 5.3125L13.1493 9.47917L11.8493 10.5208L8.51602 6.35417L9.81602 5.3125ZM13.1493 10.5208L9.81602 14.6875L8.51602 13.6458L11.8493 9.47917L13.1493 10.5208ZM12.4993 10.8333H2.49935V9.16667H12.4993V10.8333Z'
+										fill='#19376B'
+										className='group-hover:fill-white transition-all duration-300'
+									/>
+								</svg>
 							</Link>
 						</div>
 
 						{/* Mobile menu button */}
 						<button
 							onClick={toggleMenu}
-							className='lg:hidden relative z-10 p-2 rounded-xl bg-white/10 backdrop-blur-lg border border-white/20 transition-all duration-300 hover:bg-white/20'
+							className='lg:hidden relative z-10 p-2 rounded-lg bg-white/10 backdrop-blur-sm border border-white/20 transition-all duration-300 hover:bg-white/20'
 							aria-label='Toggle menu'
 						>
 							<div className='w-6 h-6 relative'>
@@ -168,68 +169,49 @@ const Header = () => {
 					isMenuOpen ? 'opacity-100' : 'opacity-0 pointer-events-none'
 				}`}
 			>
-				<div className='absolute inset-0 bg-black/80 backdrop-blur-sm' onClick={closeMenu} />
+				<div className='absolute inset-0 bg-black/50 backdrop-blur-sm' onClick={closeMenu} />
 
 				{/* Mobile Menu Panel */}
 				<div
-					className={`absolute top-0 right-0 w-80 max-w-[85vw] h-full bg-gradient-to-br from-slate-900 via-blue-900 to-indigo-900 shadow-2xl transition-transform duration-300 border-l border-blue-500/20 ${
+					className={`absolute top-0 right-0 w-80 max-w-[85vw] h-full bg-[#1e3a8a] shadow-2xl transition-transform duration-300 ${
 						isMenuOpen ? 'translate-x-0' : 'translate-x-full'
 					}`}
 				>
-					{/* Background Effects */}
-					<div className='absolute inset-0 overflow-hidden'>
-						<div className='absolute top-20 left-20 w-32 h-32 bg-blue-500/10 rounded-full blur-3xl animate-pulse'></div>
-						<div className='absolute bottom-20 right-20 w-24 h-24 bg-purple-500/10 rounded-full blur-3xl animate-pulse delay-1000'></div>
-					</div>
-
-					<div className='flex flex-col h-full relative z-10'>
+					<div className='flex flex-col h-full'>
 						{/* Header */}
-						<div className='flex items-center justify-between p-6 border-b border-blue-500/20'>
-							<div className='flex items-center space-x-3'>
-								<div className='w-8 h-8 bg-gradient-to-br from-blue-500 via-purple-500 to-pink-500 rounded-lg flex items-center justify-center'>
-									<Brain className='w-5 h-5 text-white' />
-								</div>
-								<div className='flex flex-col'>
-									<h2 className='text-xl font-black bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 bg-clip-text text-transparent'>
-										BÁCH KHOA
-									</h2>
-									<p className='text-xs text-blue-300/80 font-medium tracking-wider uppercase'>
-										Technology is Power
-									</p>
-								</div>
-							</div>
+						<div className='flex items-center justify-between p-6 border-b border-blue-600/30'>
+							<Image
+								src='/images/logo.png'
+								alt='Bách Khoa Technology'
+								width={150}
+								height={50}
+								className='h-10 w-auto object-contain'
+							/>
 							<button
 								onClick={closeMenu}
-								className='p-2 rounded-lg bg-white/10 backdrop-blur-lg border border-white/20 hover:bg-white/20 transition-all duration-200'
+								className='p-2 rounded-lg bg-white/10 backdrop-blur-sm border border-white/20 hover:bg-white/20 transition-all duration-200'
 							>
-								<X className='w-6 h-6 text-white' />
+								<X className='w-5 h-5 text-white' />
 							</button>
 						</div>
 
 						{/* Navigation */}
 						<nav className='flex-1 overflow-y-auto py-6'>
-							<div className='px-6 space-y-3'>
-								{navItems.map((item, index) => {
+							<div className='px-6 space-y-2'>
+								{navItems.map((item) => {
 									const isActive = isActiveItem(item.href);
 									return (
 										<Link
 											key={item.name}
 											href={item.href}
 											onClick={closeMenu}
-											className={`flex items-center justify-between w-full px-4 py-4 rounded-xl text-left transition-all duration-300 group ${
+											className={`block w-full px-4 py-3 rounded-lg text-left transition-all duration-300 ${
 												isActive
-													? 'bg-gradient-to-r from-blue-500/20 to-purple-500/20 text-white shadow-lg border border-blue-500/30'
-													: 'text-gray-300 hover:text-white hover:bg-white/10 border border-transparent hover:border-white/20'
+													? 'bg-white/20 text-white font-medium'
+													: 'text-blue-100 hover:text-white hover:bg-white/10'
 											}`}
 										>
-											<span className='font-semibold'>{item.name}</span>
-											<ChevronRight
-												className={`w-4 h-4 transition-all duration-300 ${
-													isActive
-														? 'text-blue-400'
-														: 'text-gray-400 group-hover:text-blue-400 group-hover:translate-x-1'
-												}`}
-											/>
+											{item.name}
 										</Link>
 									);
 								})}
@@ -237,29 +219,33 @@ const Header = () => {
 						</nav>
 
 						{/* Mobile CTA */}
-						<div className='p-6 border-t border-blue-500/20'>
+						<div className='p-6 border-t border-blue-600/30'>
 							<Link
-								href='https://lms360.vn/'
-								target='_blank'
-								rel='noopener noreferrer'
-								className='w-full group relative px-6 py-4 bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 rounded-xl font-bold text-white transform transition-all duration-300 hover:scale-105 shadow-lg overflow-hidden block text-center'
+								href='/product'
+								className='w-full flex items-center justify-center px-6 py-3 bg-white text-[#1e3a8a] font-semibold rounded-full hover:bg-blue-50 transition-all duration-300'
+								onClick={closeMenu}
 							>
-								<div className='absolute inset-0 bg-gradient-to-r from-blue-700 via-purple-700 to-pink-700 opacity-0 group-hover:opacity-100 transition-opacity duration-300'></div>
-								<div className='absolute inset-0 bg-white/10 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700 skew-x-12'></div>
-								<span className='relative z-10 flex items-center justify-center'>
-									<Rocket className='w-5 h-5 mr-2 group-hover:animate-bounce' />
-									Trải nghiệm ngay
-								</span>
+								ĐĂNG KÝ DEMO
 							</Link>
-						</div>
-
-						{/* Footer */}
-						<div className='p-6 border-t border-blue-500/20'>
-							<div className='text-center text-sm text-gray-400'>© 2024 Bách Khoa Technology</div>
 						</div>
 					</div>
 				</div>
 			</div>
+
+			{/* Keyframes for particles */}
+			<style jsx>{`
+				@keyframes twinkle {
+					0%,
+					100% {
+						opacity: 0.3;
+						transform: scale(1);
+					}
+					50% {
+						opacity: 1;
+						transform: scale(1.2);
+					}
+				}
+			`}</style>
 		</>
 	);
 };
