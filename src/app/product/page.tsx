@@ -312,7 +312,7 @@ const ProductPage = async () => {
               {schools.map((school) => (
                 <div
                   key={school.id}
-                  className="flex items-center justify-center h-24 z-10"
+                  className="flex items-center justify-center h-24 z-10 relative group"
                 >
                   <div className="w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 lg:w-28 lg:h-28 rounded-full bg-white shadow-md border border-gray-200 flex items-center justify-center overflow-hidden hover:shadow-lg transition-all duration-300">
                     <Image
@@ -321,7 +321,12 @@ const ProductPage = async () => {
                       width={120}
                       height={120}
                       className="w-auto h-auto object-contain opacity-70 transition-all duration-300 hover:opacity-100 hover:scale-[1.07] transform"
+                      title={school.name}
                     />
+                  </div>
+                  {/* Tooltip */}
+                  <div className="absolute -top-10 left-1/2 transform -translate-x-1/2 bg-gray-800 text-white text-xs rounded py-1 px-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap">
+                    {school.name}
                   </div>
                 </div>
               ))}
