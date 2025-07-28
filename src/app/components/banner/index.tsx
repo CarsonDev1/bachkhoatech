@@ -8,9 +8,9 @@ const ELearningBanner = () => {
 	const [laptopMounted, setLaptopMounted] = useState(false);
 	const [tabletMounted, setTabletMounted] = useState(false);
 	const [phoneMounted, setPhoneMounted] = useState(false);
-	const [isHovering, setIsHovering] = useState(false);
 	const containerRef = useRef<any>(null);
 	const videoRef = useRef<HTMLVideoElement>(null);
+	const [scrollPosition, setScrollPosition] = useState(0);
 
 	useEffect(() => {
 		setMounted(true);
@@ -23,6 +23,14 @@ const ELearningBanner = () => {
 		];
 
 		return () => timers.forEach((timer) => clearTimeout(timer));
+	}, []);
+
+	useEffect(() => {
+		const interval = setInterval(() => {
+			setScrollPosition((prev) => (prev + 1) % 100);
+		}, 150);
+
+		return () => clearInterval(interval);
 	}, []);
 
 	return (
@@ -165,33 +173,25 @@ const ELearningBanner = () => {
 								/>
 
 								{/* Interactive Screen Content */}
-								<div
-									className='absolute top-[7%] left-[14.5%] right-[14.5%] bottom-[28%] bg-gray-900 rounded-md overflow-hidden cursor-pointer z-30 h-[83%]'
-									onMouseEnter={() => setIsHovering(true)}
-									onMouseLeave={() => setIsHovering(false)}
-								>
+								<div className='absolute top-[7%] left-[14.5%] right-[14.5%] bottom-[28%] bg-gray-900 rounded-md overflow-hidden z-30 h-[83%]'>
 									{/* Screen Glow Effect */}
-									<div
-										className={`absolute inset-0 bg-gradient-to-br from-blue-500/20 to-purple-500/20 transition-opacity duration-500 z-40 ${
-											isHovering ? 'opacity-100' : 'opacity-0'
-										}`}
-									></div>
+									<div className='absolute inset-0 bg-gradient-to-br from-blue-500/20 to-purple-500/20 opacity-50 z-40'></div>
 
 									{/* Full Page Website Preview */}
 									<div className='relative w-full h-full overflow-hidden z-10'>
-										<div className='website-preview'>
-											<Image
-												src='/images/full-page.jpeg'
-												alt='Website Preview'
-												width={1920}
-												height={5000}
-												className='w-full h-auto object-cover object-top'
-												style={{
-													transform: isHovering ? 'translateY(-70%)' : 'translateY(0)',
-													transition: 'transform 6s ease-in-out',
-												}}
-											/>
-										</div>
+										<Image
+											src='/images/full-page.jpeg'
+											alt='Website Preview'
+											width={1920}
+											height={5000}
+											className='w-full object-cover object-top animate-bounce'
+											style={{
+												height: '400%',
+												animationDuration: '15s',
+												animationTimingFunction: 'ease-in-out',
+												animationIterationCount: 'infinite',
+											}}
+										/>
 									</div>
 
 									{/* Screen Reflection */}
@@ -201,7 +201,7 @@ const ELearningBanner = () => {
 
 							{/* Tablet Image */}
 							<div
-								className={`absolute -right-2 sm:-right-4 -bottom-1/3 sm:-bottom-1/2 w-24 sm:w-32 md:w-48 lg:w-96 z-20 transform transition-all duration-1500 ${
+								className={`absolute -right-2 sm:-right-4 -bottom-1/4 sm:-bottom-1/3 w-24 sm:w-32 md:w-48 lg:w-72 z-20 transform transition-all duration-1500 ${
 									tabletMounted ? 'translate-x-0 opacity-100' : 'translate-x-8 opacity-0'
 								}`}
 							>
@@ -234,9 +234,23 @@ const ELearningBanner = () => {
 			</div>
 
 			{/* Advanced CSS */}
-			<style jsx>{`
-				.website-preview img {
-					transform-origin: top left;
+			<style jsx global>{`
+				@keyframes scrollUp {
+					0% {
+						transform: translateY(0%);
+					}
+					25% {
+						transform: translateY(-15%);
+					}
+					50% {
+						transform: translateY(-40%);
+					}
+					75% {
+						transform: translateY(-25%);
+					}
+					100% {
+						transform: translateY(0%);
+					}
 				}
 			`}</style>
 		</div>
