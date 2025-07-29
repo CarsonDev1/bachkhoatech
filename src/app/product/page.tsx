@@ -34,7 +34,7 @@ const ProductPage = () => {
 		{
 			id: 3,
 			image: '/images/logo-schools/30.png',
-			name: 'Trường TH Nguyễn Trung Ngạn',
+			name: 'Trường THCS Nguyễn Vĩnh Nghiệp',
 		},
 		{
 			id: 4,
@@ -182,7 +182,7 @@ const ProductPage = () => {
 			description:
 				'Nền tảng học tập số toàn diện hỗ trợ dạy – học mọi lúc, mọi nơi. LMS360 cung cấp kho học liệu số, lớp học trực tuyến, giao – nộp bài, thảo luận, đánh giá và theo dõi tiến độ học tập theo cá nhân hóa, phù hợp với mọi cấp học.',
 			buttonText: 'KHÁM PHÁ NGAY',
-			buttonLink: '/product/edutech-lms',
+			buttonLink: 'https://lms360.vn/',
 			image: '/images/product-list/LMS360 (2).png',
 		},
 		{
@@ -192,7 +192,7 @@ const ProductPage = () => {
 			description:
 				'Giải pháp số hóa toàn diện các nghiệp vụ quản lý nhà trường như hồ sơ học sinh, quản lý giáo viên, thời khóa biểu, điểm danh, sức khỏe, học bạ, khen thưởng, báo cáo thống kê... Tất cả được tích hợp trên một nền tảng duy nhất.',
 			buttonText: 'TÌM HIỂU THÊM',
-			buttonLink: '/product/sms360',
+			buttonLink: 'https://qlth.lms360.vn/',
 			image: '/images/product-list/SMS360.png',
 		},
 		{
@@ -202,7 +202,7 @@ const ProductPage = () => {
 			description:
 				'Kênh kết nối nhanh chóng, bảo mật giữa nhà trường và phụ huynh. Phụ huynh có thể theo dõi tình hình học tập, rèn luyện, điểm số, lịch học – thi của con em mọi lúc, góp phần nâng cao hiệu quả phối hợp giáo dục.',
 			buttonText: 'TRẢI NGHIỆM',
-			buttonLink: '/product/so-lien-lac',
+			buttonLink: 'https://qlth.lms360.vn/',
 			image: '/images/product-list/SỔ LIÊN LẠC ĐT.png',
 		},
 		{
@@ -212,7 +212,7 @@ const ProductPage = () => {
 			description:
 				'Công cụ hỗ trợ lập thời khóa biểu nhanh chóng, khoa học, tối ưu hóa nguồn lực giảng dạy và cơ sở vật chất. Hệ thống có khả năng xử lý ràng buộc phức tạp và dễ dàng điều chỉnh khi có biến động.',
 			buttonText: 'XEM SẢN PHẨM',
-			buttonLink: '/product/thoi-khoa-bieu',
+			buttonLink: 'https://qlth.lms360.vn/',
 			image: '/images/product-list/51.png',
 		},
 		{
@@ -222,7 +222,7 @@ const ProductPage = () => {
 			description:
 				'Phần mềm quản lý sức khỏe học sinh – sinh viên theo hồ sơ điện tử. Theo dõi tiêm chủng, bệnh nền, tình trạng sức khỏe định kỳ và cảnh báo kịp thời cho phụ huynh, giáo viên và nhân viên y tế trường học.',
 			buttonText: 'TRẢI NGHIỆM',
-			buttonLink: '/product/y-te-hoc-duong',
+			buttonLink: 'https://qlth.lms360.vn/',
 			image: '/images/product-list/Y TẾ HỌC ĐƯỜNG.png',
 		},
 		{
@@ -232,7 +232,7 @@ const ProductPage = () => {
 			description:
 				'Giải pháp tổ chức thi cử hiện đại, bảo mật cao, hỗ trợ nhiều hình thức đề thi (trắc nghiệm, tự luận, kết hợp), chấm điểm tự động và phân tích kết quả theo kỹ năng – từng cá nhân, lớp học hoặc toàn trường.',
 			buttonText: 'TRẢI NGHIỆM',
-			buttonLink: '/product/virtual-classroom',
+			buttonLink: 'https://thi.lms360.vn/',
 			image: '/images/product-list/TEST360 (2).png',
 		},
 		{
@@ -242,7 +242,7 @@ const ProductPage = () => {
 			description:
 				'Công cụ luyện thi IELTS trực tuyến mô phỏng theo định dạng thi thật, với các kỹ năng nghe – nói – đọc – viết. Hệ thống chấm điểm tự động (AI + chuyên gia), gợi ý cải thiện, theo dõi tiến độ luyện thi.',
 			buttonText: 'TRẢI NGHIỆM',
-			buttonLink: '/product/thi-thu-ielts',
+			buttonLink: 'https://spartaedu.com/register?a=Bachkhoatechnology',
 			image: '/images/product-list/THI  THỬ IELTS.png',
 		},
 		{
@@ -252,7 +252,7 @@ const ProductPage = () => {
 			description:
 				'Nền tảng hỗ trợ tự đánh giá, đánh giá ngoài, lưu trữ minh chứng và theo dõi lộ trình cải tiến chất lượng. QAE360 chuẩn hóa theo Bộ tiêu chuẩn của Bộ Giáo dục và phù hợp với các cấp học.',
 			buttonText: 'TÌM HIỂU THÊM',
-			buttonLink: '/product/smart-campus',
+			buttonLink: 'https://kiemdinh.lms360.vn/',
 			image: '/images/product-list/QAE360 (2).png',
 		},
 		{
@@ -262,7 +262,7 @@ const ProductPage = () => {
 			description:
 				'Công cụ theo dõi – ghi nhận thành tích học sinh, giáo viên và đơn vị trong suốt năm học. Hỗ trợ đánh giá theo tiêu chí định lượng, minh bạch, tự động tổng hợp kết quả thi đua và tạo động lực phát triển.',
 			buttonText: 'TRẢI NGHIỆM',
-			buttonLink: '/product/thi-dua-khen-thuong',
+			buttonLink: 'https://thiduakhenthuong.hcm.edu.vn/',
 			image: '/images/product-list/THI ĐUA KHEN THƯỞNG.png',
 		},
 		{
@@ -272,7 +272,7 @@ const ProductPage = () => {
 			description:
 				'Trợ lý thông minh tích hợp công nghệ AI, có khả năng trả lời câu hỏi, tư vấn học tập, giải thích nội dung bài học và hỗ trợ cán bộ – giáo viên trong tra cứu, soạn thảo văn bản nhanh chóng.',
 			buttonText: 'XEM SẢN PHẨM',
-			buttonLink: '/product/chat360-ai',
+			buttonLink: 'https://lms360.vn/',
 			image: '/images/robot.png',
 		},
 		{
@@ -282,7 +282,7 @@ const ProductPage = () => {
 			description:
 				'Hệ thống sử dụng nhận diện khuôn mặt qua camera AI để điểm danh tự động học sinh – giáo viên. Giảm tải công việc hành chính, đảm bảo chính xác và cung cấp dữ liệu thời gian thực cho nhà trường.',
 			buttonText: 'TRẢI NGHIỆM',
-			buttonLink: '/product/diem-danh-ai',
+			buttonLink: 'https://qlth.lms360.vn/',
 			image: '/images/product-list/ĐIỂM DANH AI.png',
 		},
 		{
@@ -292,7 +292,7 @@ const ProductPage = () => {
 			description:
 				'Công cụ hỗ trợ giáo viên xây dựng giáo án, thiết kế bài giảng tương tác, tạo ngân hàng câu hỏi – bài tập và đề kiểm tra theo chương trình GDPT 2018, sử dụng trí tuệ nhân tạo để cá nhân hóa nội dung giảng dạy.',
 			buttonText: 'TRẢI NGHIỆM',
-			buttonLink: '/product/bk360-ai',
+			buttonLink: 'https://lms360.vn/',
 			image: '/images/product-list/BK360 AI.png',
 		},
 		{
@@ -302,7 +302,7 @@ const ProductPage = () => {
 			description:
 				'Phòng học ảo tương tác cho các môn KHTN, CNTT, Kỹ thuật – Công nghệ, hỗ trợ học sinh thực hành, quan sát mô phỏng thí nghiệm, tăng cường trải nghiệm học tập mà không phụ thuộc vào điều kiện vật lý.',
 			buttonText: 'TRẢI NGHIỆM',
-			buttonLink: '/product/phong-thi-nghiem',
+			buttonLink: 'https://lms360.vn/phong-thi-nghiem-ao',
 			image: '/images/product-list/THÍ NGHIỆM.png',
 		},
 		{
@@ -312,7 +312,7 @@ const ProductPage = () => {
 			description:
 				'Giải pháp lưu trữ học bạ điện tử không thể chỉnh sửa, bảo đảm minh bạch, dễ dàng chia sẻ, tra cứu và công nhận lẫn nhau giữa các cơ sở giáo dục, ứng dụng công nghệ Blockchain tiên tiến.',
 			buttonText: 'TRẢI NGHIỆM',
-			buttonLink: '/product/hoc-ba-so',
+			buttonLink: 'https://qlth.lms360.vn/',
 			image: '/images/product-list/HỌC BẠ SỐ.png',
 		},
 		{
@@ -322,7 +322,7 @@ const ProductPage = () => {
 			description:
 				'Giải pháp xác thực và bảo mật văn bản, cho phép ký các loại hồ sơ học vụ, thông báo, quyết định, chứng chỉ… trên môi trường số mà vẫn đảm bảo tính pháp lý, chống giả mạo.',
 			buttonText: 'TRẢI NGHIỆM',
-			buttonLink: '/product/chu-ky-so',
+			buttonLink: 'https://qlth.lms360.vn/',
 			image: '/images/product-list/CHỮ KÝ SỐ.png',
 		},
 		{
@@ -332,7 +332,7 @@ const ProductPage = () => {
 			description:
 				'Tích hợp cổng thanh toán số vào hệ thống nhà trường, giúp phụ huynh đóng học phí, phí dịch vụ… một cách nhanh chóng qua ví điện tử, ngân hàng, đảm bảo minh bạch và giảm tải thủ tục hành chính.',
 			buttonText: 'TRẢI NGHIỆM',
-			buttonLink: '/product/thu-phi',
+			buttonLink: 'https://qlth.lms360.vn/',
 			image: '/images/product-list/THU PHÍ.png',
 		},
 		{
@@ -342,7 +342,7 @@ const ProductPage = () => {
 			description:
 				'Chương trình bồi dưỡng kỹ năng số, chuyển đổi số và công nghệ AI dành cho cán bộ quản lý, giáo viên và học sinh – sinh viên, hướng tới xây dựng lực lượng lao động số chất lượng cao trong giáo dục.',
 			buttonText: 'TRẢI NGHIỆM',
-			buttonLink: '/product/dao-tao',
+			buttonLink: '/training',
 			image: '/images/product-list/ĐÀO TẠO.png',
 		},
 		{
@@ -352,7 +352,7 @@ const ProductPage = () => {
 			description:
 				'Hệ sinh thái thiết bị hỗ trợ chuyển đổi số trong giáo dục: bảng tương tác, máy chiếu, camera AI, máy tính bảng, máy chủ… được thiết kế phù hợp với lớp học thông minh và nhu cầu giảng dạy số hiện đại.',
 			buttonText: 'TRẢI NGHIỆM',
-			buttonLink: '/product/thiet-bi-so',
+			buttonLink: 'https://lms360.vn/',
 			image: '/images/product-list/THIẾT BỊ SỐ.png',
 		},
 	];
@@ -794,7 +794,7 @@ const ProductPage = () => {
 
 			<div ref={containerRef}>
 				<div className='container-lg'>
-					<div className='relative h-[350px] sm:h-[450px] lg:h-[546px] overflow-hidden mx-auto cursor-pointer group rounded-2xl p-4'>
+					<div className='relative h-full lg:h-[546px] overflow-hidden mx-auto cursor-pointer group rounded-2xl p-4'>
 						{/* Background Image */}
 						<Image
 							src='/images/bg-product.png'
@@ -805,7 +805,7 @@ const ProductPage = () => {
 						/>
 
 						{/* Content Container */}
-						<div className='flex flex-col lg:flex-row items-center z-10 relative justify-between h-full px-4 sm:px-6 lg:px-8'>
+						<div className='flex flex-col lg:flex-row items-center z-10 relative justify-between h-full p-4 md:p-8'>
 							<div className='flex flex-col gap-3 sm:gap-4 lg:gap-6 max-w-2xl text-center lg:text-center items-center lg:items-center px-4 sm:px-8 lg:px-16 order-2 lg:order-1'>
 								<h3
 									ref={titleRef}

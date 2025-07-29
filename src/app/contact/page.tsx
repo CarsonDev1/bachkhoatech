@@ -132,13 +132,13 @@ const SupportServiceForm = () => {
 				backgroundImage: "url('/images/support.png')",
 			}}
 		>
-			<div className='max-w-md bg-[#D1F6FBAD]/60 p-6 flex flex-col items-center'>
+			<div className='w-full md:max-w-md bg-[#D1F6FBAD]/60 p-2 md p-2:md:p-6 flex flex-col items-center'>
 				<div className='flex items-center gap-4 mb-6'>
 					<div className='text-center'>
-						<h3 className='text-xl font-bold text-blue-800 mb-2'>HỖ TRỢ DỊCH VỤ</h3>
+						<h3 className='text-sm md:text-xl font-bold text-blue-800 mb-2'>HỖ TRỢ DỊCH VỤ</h3>
 						<p className='text-blue-700 text-sm'>
 							Kênh hỗ trợ trực tiếp của Bách Khoa hân hạnh hỗ trợ
-							<br />
+							<br className='lg:block hidden' />
 							Quý Thầy/Cô, PHHS và các bạn Học sinh!
 						</p>
 					</div>
@@ -303,7 +303,7 @@ const SupportServiceForm = () => {
 					{formData.file && <div className='text-sm text-blue-700'>File đã chọn: {formData.file.name}</div>}
 				</form>
 
-				<div className='flex justify-between w-full mt-6'>
+				<div className='flex flex-col gap-2 md:flex-row justify-between w-full mt-6'>
 					<Link
 						href='tel:+84903030246'
 						className='flex items-center gap-2 text-sm text-blue-800 rounded-full bg-white border-2 border-blue-500 px-3 py-1.5'
@@ -389,13 +389,13 @@ const PartnershipForm = () => {
 				backgroundImage: "url('/images/contact.png')",
 			}}
 		>
-			<div className='max-w-md bg-[#D1F6FBAD]/60 p-6 flex flex-col items-center'>
+			<div className='max-w-md bg-[#D1F6FBAD]/60 p-2 md:p-6 flex flex-col items-center'>
 				<div className='flex items-center gap-4 mb-6'>
 					<div className='text-center'>
-						<h3 className='text-xl font-bold text-blue-800 mb-2'>LIÊN HỆ HỢP TÁC</h3>
+						<h3 className='text-sm md:text-xl font-bold text-blue-800 mb-2'>LIÊN HỆ HỢP TÁC</h3>
 						<p className='text-blue-700 text-sm'>
 							Bách Khoa vô cùng hân hạnh được đồng hành cùng
-							<br />
+							<br className='lg:block hidden' />
 							Quý Đối tác và Khách hàng!
 						</p>
 					</div>
@@ -561,7 +561,7 @@ const PartnershipForm = () => {
 					{formData.file && <div className='text-sm text-blue-700'>File đã chọn: {formData.file.name}</div>}
 				</form>
 
-				<div className='flex justify-between w-full mt-6'>
+				<div className='flex flex-col gap-2 md:flex-row justify-between w-full mt-6'>
 					<Link
 						href='tel:+84903030246'
 						className='flex items-center gap-2 text-sm text-blue-800 rounded-full bg-white border-2 border-blue-500 px-3 py-1.5'
@@ -647,13 +647,13 @@ const CareerForm = () => {
 				backgroundImage: "url('/images/tuyendung.png')",
 			}}
 		>
-			<div className='max-w-md bg-[#D1F6FBAD]/60 p-6 flex flex-col items-center'>
+			<div className='max-w-md bg-[#D1F6FBAD]/60 p-2 md:p-6 flex flex-col items-center'>
 				<div className='flex items-start gap-4 mb-6'>
 					<div className='text-center'>
-						<h3 className='text-xl font-bold text-blue-800 mb-2'>CƠ HỘI NGHỀ NGHIỆP</h3>
+						<h3 className='text-sm md:text-xl font-bold text-blue-800 mb-2'>CƠ HỘI NGHỀ NGHIỆP</h3>
 						<p className='text-blue-700 text-sm'>
 							Bách Khoa rất hoan nghênh bạn gia nhập đội ngũ và là
-							<br />
+							<br className='lg:block hidden' />
 							thành viên mới trong hành trình chuyển đổi số giáo dục
 						</p>
 					</div>
@@ -817,7 +817,7 @@ const CareerForm = () => {
 					{formData.file && <div className='text-sm text-blue-700'>File đã chọn: {formData.file.name}</div>}
 				</form>
 
-				<div className='flex justify-between w-full mt-6'>
+				<div className='flex gap-2 flex-col md:flex-row justify-between w-full mt-6'>
 					<Link
 						href='tel:+84903030246'
 						className='flex items-center gap-2 text-sm text-blue-800 rounded-full bg-white border-2 border-blue-500 px-3 py-1.5'
@@ -885,7 +885,7 @@ function VerticalTabs({ tabs = [], className }: VerticalTabsProps) {
 	return (
 		<div className={`flex w-full container-lg mx-auto ${className || ''}`}>
 			{/* Sidebar */}
-			<div className='w-16 lg:w-20 bg-sky-100/80'>
+			<div className='w-12 lg:w-20 bg-sky-100/80'>
 				<div className='flex flex-col space-y-2 p-2'>
 					{tabs.map((tab) => {
 						const Icon = tab.icon;
@@ -895,7 +895,7 @@ function VerticalTabs({ tabs = [], className }: VerticalTabsProps) {
 							<button
 								key={tab.id}
 								onClick={() => setActiveTab(tab.id)}
-								className={`group relative flex items-center justify-center size-14 px-3 py-2 rounded-full transition-all duration-200 ${
+								className={`group relative flex items-center justify-center size-9 md:size-14 px-3 py-2 rounded-full transition-all duration-200 ${
 									isActive
 										? 'bg-white shadow-lg text-white'
 										: 'text-slate-600 hover:bg-blue-100 hover:text-blue-600'
@@ -904,7 +904,7 @@ function VerticalTabs({ tabs = [], className }: VerticalTabsProps) {
 								{isActive && (
 									<motion.div
 										layoutId='activeTab'
-										className='absolute inset-0 rounded-full bg-white shadow-lg size-14'
+										className='absolute inset-0 rounded-full bg-white shadow-lg size-9 md:size-14'
 										transition={{ type: 'spring', stiffness: 500, damping: 30 }}
 									/>
 								)}
@@ -967,22 +967,22 @@ const VerticalTabsDemo = () => {
 const ContactPage = () => {
 	return (
 		<div className='py-8 lg:py-16'>
-			<div className='text-center mb-8'>
-				<h1 className='text-3xl lg:text-4xl font-bold mb-4'>Liên hệ</h1>
-				<p className='text-gray-600 max-w-2xl mx-auto'>
+			<div className='text-center mb-8 container-lg'>
+				<h1 className='text-base md:text-3xl lg:text-4xl font-bold'>Liên hệ</h1>
+				<p className='text-gray-600 mb-4'>
 					Chúng tôi luôn sẵn sàng hỗ trợ bạn. Hãy liên hệ với chúng tôi qua các kênh sau.
 				</p>
 			</div>
 
-			<div className='flex justify-center px-4'>
+			<div className='flex justify-center'>
 				<VerticalTabsDemo />
 			</div>
 
 			<div className='py-8 lg:py-16'>
 				<div className='container-lg'>
-					<div className='flex text-white'>
-						<div className='w-1/3 h-[543px] bg-[#19376B]'>
-							<div className=' p-4 flex flex-col gap-6'>
+					<div className='flex flex-col md:flex-row text-white'>
+						<div className='w-full md:w-1/3 h-full md:h-[543px] bg-[#19376B]'>
+							<div className=' p-4 flex flex-col gap-2 md:p-6'>
 								<Image src='/images/logo.png' width={200} height={80} alt='logo' className='mx-auto' />
 								<div className='flex gap-2'>
 									<MapPin className='size-6' />
@@ -1008,7 +1008,7 @@ const ContactPage = () => {
 								</div>
 							</div>
 						</div>
-						<div className='w-2/3'>
+						<div className='w-full md:w-2/3'>
 							<iframe
 								src='https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3919.3750733612437!2d106.69253487480498!3d10.782558289366564!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31752f36c0b1571d%3A0x4fb4f06e6e3e1b6b!2zMDMgQ8O0bmcgdHLGsOG7nW5nIFF14buRYyBU4bq_LCBQaMaw4budbmcgNiwgUXXhuq1uIDMsIEjhu5MgQ2jDrSBNaW5oIDcwMDAwLCBWaeG7h3QgTmFt!5e0!3m2!1svi!2s!4v1753697616329!5m2!1svi!2s'
 								width={900}

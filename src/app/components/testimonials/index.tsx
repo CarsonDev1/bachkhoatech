@@ -23,122 +23,143 @@ const TestimonialsSection = () => {
 	const testimonialsData = [
 		{
 			id: 1,
-			name: 'Trường THPT Lê Quý Đôn',
-			logo: '/images/logo-01.png',
-			description:
-				'Hệ thống LMS360 đã giúp chúng tôi hiện đại hóa quy trình giảng dạy và quản lý học sinh hiệu quả.',
-			rating: 5,
-			position: 'Hiệu trưởng',
+			logo: '/images/logo-schools/1.png',
 		},
 		{
 			id: 2,
-			name: 'Trường THPT Phú Nhuận',
-			logo: '/images/logo-02.png',
-			description: 'Platform tuyệt vời cho việc tổ chức các khóa học nghệ thuật và quản lý học viên.',
-			rating: 5,
-			position: 'Giám đốc đào tạo',
+			logo: '/images/logo-schools/2.png',
 		},
 		{
 			id: 3,
-			name: 'Trường THCS Lê Anh Xuân',
-			logo: '/images/logo-03.png',
-			description: 'Công nghệ giáo dục hiện đại giúp nâng cao chất lượng giảng dạy và học tập.',
-			rating: 5,
-			position: 'Phó Hiệu trưởng',
+			logo: '/images/logo-schools/11.png',
 		},
 		{
 			id: 4,
-			name: 'Marching Band',
-			logo: '/images/logo-04.png',
-			description: 'Giải pháp toàn diện cho việc số hóa hoạt động giáo dục và đào tạo.',
-			rating: 5,
-			position: 'Trưởng phòng đào tạo',
+			logo: '/images/logo-schools/4.png',
 		},
 		{
 			id: 5,
-			name: 'Trường THCS Lê Quý Đôn - Thủ Đức',
-			logo: '/images/logo-05.png',
-			description: 'Nền tảng uy tín và tin cậy cho hệ thống giáo dục thành phố.',
-			rating: 5,
-			position: 'Chuyên viên',
+			logo: '/images/logo-schools/5.png',
 		},
 		{
 			id: 6,
-			name: 'Trường THCS Lý Tự Trọng',
-			logo: '/images/logo-06.png',
-			description: 'Giao diện thân thiện và tính năng phong phú giúp việc tương tác học tập trở nên dễ dàng hơn.',
-			rating: 5,
-			position: 'Chuyên viên',
+			logo: '/images/logo-schools/6.png',
 		},
 		{
 			id: 7,
-			name: 'Trường THPT Cần Thạnh',
-			logo: '/images/logo-07.png',
-			description: 'Báo cáo chi tiết và phân tích dữ liệu học tập giúp chúng tôi đưa ra quyết định chính xác.',
-			rating: 5,
-			position: 'Chuyên viên',
+			logo: '/images/logo-schools/7.png',
 		},
 		{
 			id: 8,
-			name: 'Trường THCS Ngô Chí Quốc',
-			logo: '/images/logo-08.png',
-			description: 'Hỗ trợ đa nền tảng và khả năng tương tác tốt giữa giáo viên và học sinh.',
-			rating: 5,
-			position: 'Chuyên viên',
+			logo: '/images/logo-schools/8.png',
 		},
 		{
 			id: 9,
-			name: 'Trường THPT Chuyên Lê Hồng Phong',
-			logo: '/images/logo-09.png',
-			description: 'Tính bảo mật cao và khả năng sao lưu dữ liệu tự động mang lại sự an tâm cho nhà trường.',
-			rating: 5,
-			position: 'Chuyên viên',
+			logo: '/images/logo-schools/9.png',
 		},
 		{
 			id: 10,
-			name: 'BTX',
-			logo: '/images/logo-10.png',
-			description: 'Đội ngũ hỗ trợ kỹ thuật chuyên nghiệp và thời gian phản hồi nhanh chóng.',
-			rating: 5,
-			position: 'Chuyên viên',
+			logo: '/images/logo-schools/10.png',
+		},
+		{
+			id: 11,
+			logo: '/images/logo-schools/12.png',
+		},
+		{
+			id: 12,
+			logo: '/images/logo-schools/13.png',
+		},
+		{
+			id: 13,
+			logo: '/images/logo-schools/14.png',
+		},
+		{
+			id: 14,
+			logo: '/images/logo-schools/15.png',
+		},
+		{
+			id: 15,
+			logo: '/images/logo-schools/16.png',
+		},
+		{
+			id: 16,
+			logo: '/images/logo-schools/17.png',
+		},
+		{
+			id: 17,
+			logo: '/images/logo-schools/18.png',
+		},
+		{
+			id: 18,
+			logo: '/images/logo-schools/19.png',
+		},
+		{
+			id: 19,
+			logo: '/images/logo-schools/20.png',
+		},
+		{
+			id: 20,
+			logo: '/images/logo-schools/21.png',
+		},
+		{
+			id: 21,
+			logo: '/images/logo-schools/22.png',
+		},
+		{
+			id: 22,
+			logo: '/images/logo-schools/23.png',
+		},
+		{
+			id: 23,
+			logo: '/images/logo-schools/24.png',
+		},
+		{
+			id: 24,
+			logo: '/images/logo-schools/25.png',
+		},
+		{
+			id: 25,
+			logo: '/images/logo-schools/26.png',
+		},
+		{
+			id: 26,
+			logo: '/images/logo-schools/27.png',
+		},
+		{
+			id: 27,
+			logo: '/images/logo-schools/28.png',
+		},
+		{
+			id: 28,
+			logo: '/images/logo-schools/29.png',
+		},
+		{
+			id: 29,
+			logo: '/images/logo-schools/30.png',
 		},
 	];
 
 	const firstRow = testimonialsData.slice(0, Math.ceil(testimonialsData.length / 2));
 	const secondRow = testimonialsData.slice(Math.ceil(testimonialsData.length / 2));
 
-	const TestimonialCard = ({
-		logo,
-		name,
-		position,
-		description,
-		rating,
-	}: {
-		logo: string;
-		name: string;
-		position: string;
-		description: string;
-		rating: number;
-	}) => {
+	const TestimonialCard = ({ logo }: { logo: string }) => {
 		return (
 			<figure
 				className={cn(
-					'relative h-full w-80 cursor-pointer overflow-hidden rounded-xl border p-6',
-					'border-gray-200 bg-white hover:bg-gray-50 shadow-lg hover:shadow-xl transition-all duration-300'
+					'relative h-full w-36 cursor-pointer overflow-hidden rounded-xl p-6',
+					'transition-all duration-300'
 				)}
 			>
 				<div className='flex flex-row items-center gap-3 mb-4'>
-					<div className='size-24 rounded-full overflow-hidden flex items-center justify-center'>
-						<Image src={logo} alt={name} width={96} height={96} className='w-full h-full object-contain' />
+					<div className='rounded-full overflow-hidden flex items-center justify-center'>
+						<Image
+							src={logo}
+							alt={`logo`}
+							width={96}
+							height={96}
+							className='w-full h-full object-contain'
+						/>
 					</div>
-					<figcaption className='text-sm font-bold text-[#19376B] leading-tight'>{name}</figcaption>
-				</div>
-
-				{/* Rating Stars */}
-				<div className='flex items-center gap-1 mb-3'>
-					{Array.from({ length: rating }).map((_, i) => (
-						<Star key={i} className='w-4 h-4 fill-yellow-400 text-yellow-400' />
-					))}
 				</div>
 			</figure>
 		);
@@ -167,12 +188,17 @@ const TestimonialsSection = () => {
 
 					{/* Marquee */}
 					<div className='relative flex w-full flex-col items-center justify-center overflow-hidden rounded-xl'>
-						<Marquee pauseOnHover className='[--duration:25s] py-4'>
+						<Marquee pauseOnHover className='[--duration:25s] py-2'>
 							{firstRow.map((testimonial) => (
 								<TestimonialCard key={testimonial.id} {...testimonial} />
 							))}
 						</Marquee>
-						<Marquee reverse pauseOnHover className='[--duration:25s] py-4'>
+						<Marquee reverse pauseOnHover className='[--duration:25s] py-2'>
+							{secondRow.map((testimonial) => (
+								<TestimonialCard key={testimonial.id} {...testimonial} />
+							))}
+						</Marquee>
+						<Marquee pauseOnHover className='[--duration:25s] py-2'>
 							{secondRow.map((testimonial) => (
 								<TestimonialCard key={testimonial.id} {...testimonial} />
 							))}

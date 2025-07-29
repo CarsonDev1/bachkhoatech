@@ -1,6 +1,6 @@
 'use client';
 import React, { useState, useRef, useEffect } from 'react';
-import { Play, Pause, Volume2, Maximize, MoreHorizontal, ArrowRight, Sparkles } from 'lucide-react';
+import { Play, Pause, Volume2, VolumeX, Maximize, MoreHorizontal, ArrowRight, Sparkles } from 'lucide-react';
 import Image from 'next/image';
 
 const LMSIntroSection = () => {
@@ -8,7 +8,7 @@ const LMSIntroSection = () => {
 	const [currentTime, setCurrentTime] = useState(0);
 	const [duration, setDuration] = useState(0);
 	const [volume, setVolume] = useState(1);
-	const [isMuted, setIsMuted] = useState(false);
+	const [isMuted, setIsMuted] = useState(true); // Khởi tạo true vì video muted ban đầu
 	const [mounted, setMounted] = useState(false);
 	const [isInView, setIsInView] = useState(false);
 	const [hasBeenInView, setHasBeenInView] = useState(false);
@@ -54,6 +54,11 @@ const LMSIntroSection = () => {
 			observer.observe(sectionRef.current);
 		}
 
+		// Đồng bộ state với video element khi component mount
+		if (videoRef.current) {
+			setIsMuted(videoRef.current.muted);
+		}
+
 		return () => {
 			if (sectionRef.current) {
 				observer.unobserve(sectionRef.current);
@@ -81,6 +86,8 @@ const LMSIntroSection = () => {
 	const handleLoadedMetadata = () => {
 		if (videoRef.current) {
 			setDuration(videoRef.current.duration);
+			// Đồng bộ lại state khi metadata load xong
+			setIsMuted(videoRef.current.muted);
 		}
 	};
 
@@ -96,8 +103,9 @@ const LMSIntroSection = () => {
 
 	const toggleMute = () => {
 		if (videoRef.current) {
-			videoRef.current.muted = !isMuted;
-			setIsMuted(!isMuted);
+			const newMutedState = !isMuted;
+			videoRef.current.muted = newMutedState;
+			setIsMuted(newMutedState);
 		}
 	};
 
@@ -299,7 +307,11 @@ const LMSIntroSection = () => {
 												onClick={toggleMute}
 												className='text-white hover:text-blue-300 transition-colors p-2 rounded-full hover:bg-white/10'
 											>
-												<Volume2 className={`w-5 h-5 ${isMuted ? 'text-red-400' : ''}`} />
+												{isMuted ? (
+													<VolumeX className='w-5 h-5 text-red-400' />
+												) : (
+													<Volume2 className='w-5 h-5' />
+												)}
 											</button>
 											<button
 												onClick={toggleFullscreen}

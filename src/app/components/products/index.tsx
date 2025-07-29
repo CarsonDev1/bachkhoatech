@@ -10,6 +10,7 @@ import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import 'swiper/css/effect-coverflow';
 import Image from 'next/image';
+import Link from 'next/link';
 
 const Products = () => {
 	const [mounted, setMounted] = useState(false);
@@ -22,7 +23,7 @@ const Products = () => {
 		{
 			id: 1,
 			name: 'LMS360 - Hệ thống quản lý học tập',
-			image: '/images/products/LMS360.png',
+			image: '/images/product-list/LMS360.png',
 			description:
 				'Nền tảng học tập trực tuyến toàn diện, hỗ trợ giảng dạy và học tập hiệu quả với công nghệ hiện đại.',
 			category: 'Giáo dục số',
@@ -55,7 +56,7 @@ const Products = () => {
 		{
 			id: 5,
 			name: 'SMS360 - Quản lý trường học',
-			image: '/images/products/SMS360.png',
+			image: '/images/product-list/SMS360 (2).png',
 			description: 'Hệ thống quản lý trường học, kết nối nhà trường với phụ huynh và học sinh.',
 			category: 'Giao tiếp',
 			features: ['Tin nhắn tự động', 'Thông báo nhanh', 'Quản lý danh bạ'],
@@ -71,7 +72,7 @@ const Products = () => {
 		{
 			id: 7,
 			name: 'TEST360 - Kiểm tra đánh giá',
-			image: '/images/products/TEST360.png',
+			image: '/images/product-list/TEST360.png',
 			description: 'Hệ thống thi và kiểm tra trực tuyến với ngân hàng câu hỏi phong phú.',
 			category: 'Đánh giá',
 			features: ['Thi trực tuyến', 'Ngân hàng câu hỏi', 'Chấm điểm tự động'],
@@ -79,7 +80,7 @@ const Products = () => {
 		{
 			id: 8,
 			name: 'QAE360 - Đảm bảo chất lượng',
-			image: '/images/products/QAE360.png',
+			image: '/images/product-list/QAE360.png',
 			description: 'Hệ thống quản lý và đảm bảo chất lượng giáo dục theo tiêu chuẩn quốc tế.',
 			category: 'Đánh giá chất lượng',
 			features: ['Tiêu chuẩn quốc tế', 'Kiểm định chất lượng', 'Báo cáo chi tiết'],
@@ -111,7 +112,7 @@ const Products = () => {
 		{
 			id: 12,
 			name: 'Thi đua khen thưởng',
-			image: '/images/products/THI ĐUA KHEN THƯỞNG.png',
+			image: '/images/product-list/THI ĐUA KHEN THƯỞNG.png',
 			description: 'Quản lý các hoạt động thi đua, khen thưởng nhằm động viên tinh thần học tập.',
 			category: 'Quản lý hoạt động',
 			features: ['Quản lý cuộc thi', 'Hệ thống điểm thưởng', 'Báo cáo thành tích'],
@@ -280,9 +281,12 @@ const Products = () => {
 
 									{/* Action Button */}
 									<div className='relative z-10 text-center'>
-										<button className='px-6 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-full font-medium transition-all duration-300 transform hover:scale-105'>
+										<Link
+											href='/product'
+											className='px-6 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-full font-medium transition-all duration-300 transform hover:scale-105'
+										>
 											Tìm hiểu thêm
-										</button>
+										</Link>
 									</div>
 
 									{/* Floating Elements */}

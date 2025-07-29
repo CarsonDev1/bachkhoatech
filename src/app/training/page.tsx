@@ -2,7 +2,6 @@
 import Image from 'next/image';
 import React from 'react';
 import { motion } from 'framer-motion';
-import Link from 'next/link';
 
 const ContinuousShakeRingButton = () => {
 	return (
@@ -91,8 +90,8 @@ const ContinuousShakeRingButton = () => {
 				</div>
 
 				{/* Main Button with Continuous Shake */}
-				<Link
-					href='/contact'
+				<a
+					href='mailto:admin@bachkhoa.tech'
 					className='relative flex items-center gap-2 bg-[#19376B] hover:bg-sky-800 px-6 py-3 rounded-full text-white font-bold cursor-pointer transition-all duration-300 transform hover:scale-110 shadow-2xl hover:shadow-purple-500/30 border border-purple-400/30 shake-continuous'
 				>
 					<span>ĐĂNG KÝ NGAY</span>
@@ -114,7 +113,7 @@ const ContinuousShakeRingButton = () => {
 							fill='white'
 						/>
 					</svg>
-				</Link>
+				</a>
 			</div>
 		</div>
 	);
