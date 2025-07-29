@@ -1,341 +1,925 @@
-import React from "react";
-import Image from "next/image";
-import {
-  ArrowRight,
-  CheckCircle,
-  Users,
-  Zap,
-  BookOpen,
-  GraduationCap,
-  Calendar,
-} from "lucide-react";
-import { Metadata } from "next";
-import { schools } from "./data";
+'use client';
+import React, { useEffect, useRef, useState } from 'react';
+import Image from 'next/image';
+import Link from 'next/link';
+import { gsap } from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { BookOpen, Users } from 'lucide-react';
+import CarouselCards from '@/app/components/carousel-card';
+import CountUp from '@/app/components/count-up';
 
-// ISR Configuration
-export const revalidate = 3600;
+// Đăng ký plugin ScrollTrigger
+gsap.registerPlugin(ScrollTrigger);
 
-// SEO Metadata
-export const metadata: Metadata = {
-  title: "Sản Phẩm | Bách Khoa Technology",
-  description:
-    "Khám phá các sản phẩm công nghệ giáo dục tiên tiến của Bách Khoa Technology - LMS360, hệ thống kiểm định chất lượng, điểm danh AI và nhiều giải pháp khác.",
-  keywords:
-    "LMS360, e-learning, giáo dục số, điểm danh AI, kiểm định chất lượng giáo dục, sổ liên lạc điện tử",
-  openGraph: {
-    title: "Sản Phẩm | Bách Khoa Technology",
-    description:
-      "Các giải pháp công nghệ giáo dục hàng đầu cho trường học hiện đại",
-    type: "website",
-    images: ["/images/logo.png"],
-  },
-};
+const ProductPage = () => {
+	const containerRef = useRef(null);
+	const titleRef = useRef(null);
+	const descRef = useRef(null);
+	const buttonRef = useRef(null);
+	const robotRef = useRef(null);
+	const progressRef = useRef<any>(null);
+	const [currentProductIndex, setCurrentProductIndex] = useState(0);
 
-// Static data
-async function getProductData() {
-  await new Promise((resolve) => setTimeout(resolve, 100));
+	const data = [
+		{
+			id: 1,
+			image: '/images/logo-schools/1.png',
+			name: 'Trường TH Trần Quốc Toản',
+		},
+		{
+			id: 2,
+			image: '/images/logo-schools/2.png',
+			name: 'Trường TH Phạm Văn Chính',
+		},
+		{
+			id: 3,
+			image: '/images/logo-schools/30.png',
+			name: 'Trường TH Nguyễn Trung Ngạn',
+		},
+		{
+			id: 4,
+			image: '/images/logo-schools/4.png',
+			name: 'Trường TH Lương Thế Vinh',
+		},
+		{
+			id: 5,
+			image: '/images/logo-schools/5.png',
+			name: 'Trường TH Tân Sơn Nhì',
+		},
+		{
+			id: 6,
+			image: '/images/logo-schools/6.png',
+			name: 'Trường TH Hồ Văn Huê',
+		},
+		{
+			id: 17,
+			image: '/images/logo-schools/17.png',
+			name: 'Trường TH Thuận Kiều',
+		},
+		{
+			id: 24,
+			image: '/images/logo-schools/24.png',
+			name: 'Trường TH Huỳnh Mẫn Đạt',
+		},
+		{
+			id: 25,
+			image: '/images/logo-schools/25.png',
+			name: 'Trường TH Nguyễn Trung Ngạn',
+		},
+		{
+			id: 26,
+			image: '/images/logo-schools/26.png',
+			name: 'Trường TH Trần Quang Cơ',
+		},
+		{
+			id: 27,
+			image: '/images/logo-schools/27.png',
+			name: 'Trường TH Huỳnh Văn Chính',
+		},
+		{
+			id: 7,
+			image: '/images/logo-schools/7.png',
+			name: 'Trường THCS Cần Thạnh',
+		},
+		{
+			id: 8,
+			image: '/images/logo-schools/8.png',
+			name: 'Trường THCS Tôn Thất Tùng',
+		},
+		{
+			id: 9,
+			image: '/images/logo-schools/9.png',
+			name: 'Trường THCS Trần Huy Liệu',
+		},
+		{
+			id: 10,
+			image: '/images/logo-schools/10.png',
+			name: 'Trường THCS Đặng Trần Côn',
+		},
+		{
+			id: 11,
+			image: '/images/logo-schools/11.png',
+			name: 'Trường THCS Lê Văn Tám',
+		},
+		{
+			id: 28,
+			image: '/images/logo-schools/28.png',
+			name: 'Trường THCS Hai Bà Trưng',
+		},
+		{
+			id: 29,
+			image: '/images/logo-schools/29.png',
+			name: 'Trường THCS Lê Văn Hưu',
+		},
+		{
+			id: 30,
+			image: '/images/logo-schools/30.png',
+			name: 'Trường THCS Nguyễn Vĩnh Nghiệp',
+		},
+		{
+			id: 12,
+			image: '/images/logo-schools/12.png',
+			name: 'Trường THPT Trần Hữu Trang',
+		},
+		{
+			id: 13,
+			image: '/images/logo-schools/13.png',
+			name: 'Trường THPT Nguyễn Hữu Thọ',
+		},
+		{
+			id: 14,
+			image: '/images/logo-schools/14.png',
+			name: 'Trường THPT Nguyễn Huệ',
+		},
+		{
+			id: 15,
+			image: '/images/logo-schools/15.png',
+			name: 'Trường THPT Gò Vấp',
+		},
+		{
+			id: 16,
+			image: '/images/logo-schools/16.png',
+			name: 'Trường THPT Bình Tân',
+		},
 
-  return {
-    hero: {
-      title: "Sản Phẩm Tiêu Biểu",
-      subtitle: "Giải pháp công nghệ giáo dục toàn diện",
-      description:
-        "Chúng tôi phát triển các sản phẩm công nghệ tiên tiến, đáp ứng mọi nhu cầu của hệ thống giáo dục hiện đại từ quản lý học tập đến đánh giá chất lượng.",
-    },
-    featuredProducts: [
-      {
-        id: "lms360",
-        title: "LMS360 e-Learning",
-        description:
-          "Hệ thống quản lý học tập toàn diện với AI, hỗ trợ học trực tuyến, quản lý khóa học và theo dõi tiến độ học tập.",
-        icon: "📚",
-        features: [
-          "Học tập trực tuyến",
-          "Quản lý khóa học",
-          "Báo cáo chi tiết",
-          "Tích hợp AI",
-        ],
-        color: "from-blue-500 to-cyan-500",
-        link: "https://lms360.vn",
-      },
-      {
-        id: "quality-assessment",
-        title: "Hệ thống Kiểm định Chất lượng Giáo dục",
-        description:
-          "Công cụ đánh giá và kiểm định chất lượng giáo dục theo tiêu chuẩn quốc gia và quốc tế.",
-        icon: "✅",
-        features: [
-          "Đánh giá tiêu chuẩn",
-          "Báo cáo tự động",
-          "Phân tích dữ liệu",
-          "Theo dõi cải tiến",
-        ],
-        color: "from-green-500 to-emerald-500",
-        link: "#",
-      },
-      {
-        id: "reward-system",
-        title: "Hệ thống Đánh giá - Thi đua Khen thưởng",
-        description:
-          "Nền tảng quản lý và đánh giá thành tích, thi đua khen thưởng cho học sinh, giáo viên.",
-        icon: "🏆",
-        features: [
-          "Quản lý thành tích",
-          "Thi đua khen thưởng",
-          "Xếp hạng tự động",
-          "Báo cáo thống kê",
-        ],
-        color: "from-yellow-500 to-orange-500",
-        link: "#",
-      },
-      {
-        id: "schedule-management",
-        title: "Sắp xếp Thời khóa biểu",
-        description:
-          "Giải pháp tối ưu hóa việc sắp xếp thời khóa biểu tự động, quản lý lịch học hiệu quả.",
-        icon: "📅",
-        features: [
-          "Sắp xếp tự động",
-          "Tối ưu hóa",
-          "Xung đột thời gian",
-          "Báo cáo lịch học",
-        ],
-        color: "from-purple-500 to-pink-500",
-        link: "#",
-      },
-      {
-        id: "ai-attendance",
-        title: "Điểm danh Nhận diện Khuôn mặt bằng AI",
-        description:
-          "Hệ thống điểm danh thông minh sử dụng AI nhận diện khuôn mặt, chính xác và nhanh chóng.",
-        icon: "🤖",
-        features: [
-          "Nhận diện AI",
-          "Điểm danh tự động",
-          "Báo cáo vắng mặt",
-          "Bảo mật cao",
-        ],
-        color: "from-indigo-500 to-blue-500",
-        link: "#",
-      },
-      {
-        id: "digital-handbook",
-        title: "Sổ Liên lạc Điện tử",
-        description:
-          "Ứng dụng kết nối giữa nhà trường, phụ huynh và học sinh, theo dõi quá trình học tập.",
-        icon: "📱",
-        features: [
-          "Liên lạc đa chiều",
-          "Theo dõi học tập",
-          "Thông báo tức thì",
-          "Báo cáo định kỳ",
-        ],
-        color: "from-teal-500 to-cyan-500",
-        link: "#",
-      },
-    ],
-    customers: [
-      { name: "Phòng GD&ĐT Quận 3", logo: "/images/logos/quan3.png" },
-      { name: "Phòng GD&ĐT Quận 4", logo: "/images/logos/quan4.png" },
-      { name: "Phòng GD&ĐT Quận 7", logo: "/images/logos/quan7.png" },
-      { name: "Phòng GD&ĐT Quận Tân Phú", logo: "/images/logos/tanphu.png" },
-      { name: "Phòng GD&ĐT TP Thủ Đức", logo: "/images/logos/thuduc.png" },
-      { name: "Phòng GD&ĐT Huyện Cần Giờ", logo: "/images/logos/cangio.png" },
-      {
-        name: "Trường THPT Lê Hồng Phong",
-        logo: "/images/logos/lehongphong.png",
-      },
-      { name: "Trường THPT Lê Quý Đôn", logo: "/images/logos/lequydon.png" },
-      { name: "Trường THPT Phi Khanh", logo: "/images/logos/phikhanh.png" },
-      {
-        name: "Trường THPT Trần Khai Nguyên",
-        logo: "/images/logos/trankhainguyen.png",
-      },
-      {
-        name: "Trường THPT Nguyễn Văn Tráng",
-        logo: "/images/logos/nguyenvantrang.png",
-      },
-      {
-        name: "Trường THPT Nguyễn Công Trứ",
-        logo: "/images/logos/nguyencongtu.png",
-      },
-    ],
-    stats: [
-      { value: "50+", label: "Sản phẩm", icon: Zap },
-      { value: "500+", label: "Khách hàng", icon: Users },
-      { value: "1M+", label: "Người dùng", icon: GraduationCap },
-    ],
-  };
-}
+		{
+			id: 18,
+			image: '/images/logo-schools/18.png',
+			name: 'Trường THPT Bùi Thị Xuân',
+		},
+		{
+			id: 19,
+			image: '/images/logo-schools/19.png',
+			name: 'Trường THPT Tạ Quang Bửu',
+		},
+		{
+			id: 20,
+			image: '/images/logo-schools/20.png',
+			name: 'Trường THPT Phú Nhuận',
+		},
+		{
+			id: 21,
+			image: '/images/logo-schools/21.png',
+			name: 'Trường THPT Nguyễn Khuyến',
+		},
+		{
+			id: 22,
+			image: '/images/logo-schools/22.png',
+			name: 'Trường THPT Trần Hưng Đạo',
+		},
+		{
+			id: 23,
+			image: '/images/logo-schools/23.png',
+			name: 'Trường THPT Nguyễn Công Trứ',
+		},
+	];
 
-const ProductPage = async () => {
-  const data = await getProductData();
+	const products = [
+		{
+			id: 1,
+			title: 'LMS360',
+			titleColor: '#0FF',
+			description:
+				'Nền tảng học tập số toàn diện hỗ trợ dạy – học mọi lúc, mọi nơi. LMS360 cung cấp kho học liệu số, lớp học trực tuyến, giao – nộp bài, thảo luận, đánh giá và theo dõi tiến độ học tập theo cá nhân hóa, phù hợp với mọi cấp học.',
+			buttonText: 'KHÁM PHÁ NGAY',
+			buttonLink: '/product/edutech-lms',
+			image: '/images/product-list/LMS360 (2).png',
+		},
+		{
+			id: 2,
+			title: 'SMS360',
+			titleColor: '#0FF',
+			description:
+				'Giải pháp số hóa toàn diện các nghiệp vụ quản lý nhà trường như hồ sơ học sinh, quản lý giáo viên, thời khóa biểu, điểm danh, sức khỏe, học bạ, khen thưởng, báo cáo thống kê... Tất cả được tích hợp trên một nền tảng duy nhất.',
+			buttonText: 'TÌM HIỂU THÊM',
+			buttonLink: '/product/sms360',
+			image: '/images/product-list/SMS360.png',
+		},
+		{
+			id: 3,
+			title: 'SỔ LIÊN LẠC ĐIỆN TỬ',
+			titleColor: '#0FF',
+			description:
+				'Kênh kết nối nhanh chóng, bảo mật giữa nhà trường và phụ huynh. Phụ huynh có thể theo dõi tình hình học tập, rèn luyện, điểm số, lịch học – thi của con em mọi lúc, góp phần nâng cao hiệu quả phối hợp giáo dục.',
+			buttonText: 'TRẢI NGHIỆM',
+			buttonLink: '/product/so-lien-lac',
+			image: '/images/product-list/SỔ LIÊN LẠC ĐT.png',
+		},
+		{
+			id: 4,
+			title: 'THỜI KHÓA BIỂU TỰ ĐỘNG',
+			titleColor: '#0FF',
+			description:
+				'Công cụ hỗ trợ lập thời khóa biểu nhanh chóng, khoa học, tối ưu hóa nguồn lực giảng dạy và cơ sở vật chất. Hệ thống có khả năng xử lý ràng buộc phức tạp và dễ dàng điều chỉnh khi có biến động.',
+			buttonText: 'XEM SẢN PHẨM',
+			buttonLink: '/product/thoi-khoa-bieu',
+			image: '/images/product-list/51.png',
+		},
+		{
+			id: 5,
+			title: 'Y TẾ HỌC ĐƯỜNG',
+			titleColor: '#0FF',
+			description:
+				'Phần mềm quản lý sức khỏe học sinh – sinh viên theo hồ sơ điện tử. Theo dõi tiêm chủng, bệnh nền, tình trạng sức khỏe định kỳ và cảnh báo kịp thời cho phụ huynh, giáo viên và nhân viên y tế trường học.',
+			buttonText: 'TRẢI NGHIỆM',
+			buttonLink: '/product/y-te-hoc-duong',
+			image: '/images/product-list/Y TẾ HỌC ĐƯỜNG.png',
+		},
+		{
+			id: 6,
+			title: 'TEST360',
+			titleColor: '#0FF',
+			description:
+				'Giải pháp tổ chức thi cử hiện đại, bảo mật cao, hỗ trợ nhiều hình thức đề thi (trắc nghiệm, tự luận, kết hợp), chấm điểm tự động và phân tích kết quả theo kỹ năng – từng cá nhân, lớp học hoặc toàn trường.',
+			buttonText: 'TRẢI NGHIỆM',
+			buttonLink: '/product/virtual-classroom',
+			image: '/images/product-list/TEST360 (2).png',
+		},
+		{
+			id: 7,
+			title: 'THI THỬ IELTS',
+			titleColor: '#0FF',
+			description:
+				'Công cụ luyện thi IELTS trực tuyến mô phỏng theo định dạng thi thật, với các kỹ năng nghe – nói – đọc – viết. Hệ thống chấm điểm tự động (AI + chuyên gia), gợi ý cải thiện, theo dõi tiến độ luyện thi.',
+			buttonText: 'TRẢI NGHIỆM',
+			buttonLink: '/product/thi-thu-ielts',
+			image: '/images/product-list/THI  THỬ IELTS.png',
+		},
+		{
+			id: 8,
+			title: 'QAE360',
+			titleColor: '#0FF',
+			description:
+				'Nền tảng hỗ trợ tự đánh giá, đánh giá ngoài, lưu trữ minh chứng và theo dõi lộ trình cải tiến chất lượng. QAE360 chuẩn hóa theo Bộ tiêu chuẩn của Bộ Giáo dục và phù hợp với các cấp học.',
+			buttonText: 'TÌM HIỂU THÊM',
+			buttonLink: '/product/smart-campus',
+			image: '/images/product-list/QAE360 (2).png',
+		},
+		{
+			id: 9,
+			title: 'THI ĐUA KHEN THƯỞNG',
+			titleColor: '#0FF',
+			description:
+				'Công cụ theo dõi – ghi nhận thành tích học sinh, giáo viên và đơn vị trong suốt năm học. Hỗ trợ đánh giá theo tiêu chí định lượng, minh bạch, tự động tổng hợp kết quả thi đua và tạo động lực phát triển.',
+			buttonText: 'TRẢI NGHIỆM',
+			buttonLink: '/product/thi-dua-khen-thuong',
+			image: '/images/product-list/THI ĐUA KHEN THƯỞNG.png',
+		},
+		{
+			id: 10,
+			title: 'CHAT360 AI',
+			titleColor: '#0FF',
+			description:
+				'Trợ lý thông minh tích hợp công nghệ AI, có khả năng trả lời câu hỏi, tư vấn học tập, giải thích nội dung bài học và hỗ trợ cán bộ – giáo viên trong tra cứu, soạn thảo văn bản nhanh chóng.',
+			buttonText: 'XEM SẢN PHẨM',
+			buttonLink: '/product/chat360-ai',
+			image: '/images/robot.png',
+		},
+		{
+			id: 11,
+			title: 'ĐIỂM DANH AI',
+			titleColor: '#0FF',
+			description:
+				'Hệ thống sử dụng nhận diện khuôn mặt qua camera AI để điểm danh tự động học sinh – giáo viên. Giảm tải công việc hành chính, đảm bảo chính xác và cung cấp dữ liệu thời gian thực cho nhà trường.',
+			buttonText: 'TRẢI NGHIỆM',
+			buttonLink: '/product/diem-danh-ai',
+			image: '/images/product-list/ĐIỂM DANH AI.png',
+		},
+		{
+			id: 12,
+			title: 'BK360 AI',
+			titleColor: '#0FF',
+			description:
+				'Công cụ hỗ trợ giáo viên xây dựng giáo án, thiết kế bài giảng tương tác, tạo ngân hàng câu hỏi – bài tập và đề kiểm tra theo chương trình GDPT 2018, sử dụng trí tuệ nhân tạo để cá nhân hóa nội dung giảng dạy.',
+			buttonText: 'TRẢI NGHIỆM',
+			buttonLink: '/product/bk360-ai',
+			image: '/images/product-list/BK360 AI.png',
+		},
+		{
+			id: 13,
+			title: 'PHÒNG THÍ NGHIỆM MÔ PHỎNG',
+			titleColor: '#0FF',
+			description:
+				'Phòng học ảo tương tác cho các môn KHTN, CNTT, Kỹ thuật – Công nghệ, hỗ trợ học sinh thực hành, quan sát mô phỏng thí nghiệm, tăng cường trải nghiệm học tập mà không phụ thuộc vào điều kiện vật lý.',
+			buttonText: 'TRẢI NGHIỆM',
+			buttonLink: '/product/phong-thi-nghiem',
+			image: '/images/product-list/THÍ NGHIỆM.png',
+		},
+		{
+			id: 14,
+			title: 'HỌC BẠ SỐ',
+			titleColor: '#0FF',
+			description:
+				'Giải pháp lưu trữ học bạ điện tử không thể chỉnh sửa, bảo đảm minh bạch, dễ dàng chia sẻ, tra cứu và công nhận lẫn nhau giữa các cơ sở giáo dục, ứng dụng công nghệ Blockchain tiên tiến.',
+			buttonText: 'TRẢI NGHIỆM',
+			buttonLink: '/product/hoc-ba-so',
+			image: '/images/product-list/HỌC BẠ SỐ.png',
+		},
+		{
+			id: 15,
+			title: 'CHỮ KÝ SỐ',
+			titleColor: '#0FF',
+			description:
+				'Giải pháp xác thực và bảo mật văn bản, cho phép ký các loại hồ sơ học vụ, thông báo, quyết định, chứng chỉ… trên môi trường số mà vẫn đảm bảo tính pháp lý, chống giả mạo.',
+			buttonText: 'TRẢI NGHIỆM',
+			buttonLink: '/product/chu-ky-so',
+			image: '/images/product-list/CHỮ KÝ SỐ.png',
+		},
+		{
+			id: 16,
+			title: 'THU PHÍ',
+			titleColor: '#0FF',
+			description:
+				'Tích hợp cổng thanh toán số vào hệ thống nhà trường, giúp phụ huynh đóng học phí, phí dịch vụ… một cách nhanh chóng qua ví điện tử, ngân hàng, đảm bảo minh bạch và giảm tải thủ tục hành chính.',
+			buttonText: 'TRẢI NGHIỆM',
+			buttonLink: '/product/thu-phi',
+			image: '/images/product-list/THU PHÍ.png',
+		},
+		{
+			id: 17,
+			title: 'ĐÀO TẠO',
+			titleColor: '#0FF',
+			description:
+				'Chương trình bồi dưỡng kỹ năng số, chuyển đổi số và công nghệ AI dành cho cán bộ quản lý, giáo viên và học sinh – sinh viên, hướng tới xây dựng lực lượng lao động số chất lượng cao trong giáo dục.',
+			buttonText: 'TRẢI NGHIỆM',
+			buttonLink: '/product/dao-tao',
+			image: '/images/product-list/ĐÀO TẠO.png',
+		},
+		{
+			id: 18,
+			title: 'THIẾT BỊ SỐ',
+			titleColor: '#0FF',
+			description:
+				'Hệ sinh thái thiết bị hỗ trợ chuyển đổi số trong giáo dục: bảng tương tác, máy chiếu, camera AI, máy tính bảng, máy chủ… được thiết kế phù hợp với lớp học thông minh và nhu cầu giảng dạy số hiện đại.',
+			buttonText: 'TRẢI NGHIỆM',
+			buttonLink: '/product/thiet-bi-so',
+			image: '/images/product-list/THIẾT BỊ SỐ.png',
+		},
+	];
 
-  return (
-    <div className="min-h-screen bg-white">
-      {/* Hero Section */}
-      <section className="relative py-10 lg:py-16 bg-slate-800 overflow-hidden">
-        {/* Background Pattern */}
-        <div className="absolute inset-0 opacity-10">
-          <div className='absolute inset-0 bg-[url("data:image/svg+xml,%3Csvg width="60" height="60" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg"%3E%3Cg fill="none" fill-rule="evenodd"%3E%3Cg fill="%23000000" fill-opacity="0.1"%3E%3Ccircle cx="30" cy="30" r="1"/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")]'></div>
-        </div>
+	useEffect(() => {
+		const container: any = containerRef.current;
+		const title: any = titleRef.current;
+		const desc: any = descRef.current;
+		const button: any = buttonRef.current;
+		const robot: any = robotRef.current;
 
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <div className="text-center max-w-4xl mx-auto">
-            <h1 className="text-4xl lg:text-6xl font-bold text-white mb-6">
-              {data.hero.title}
-            </h1>
-            <p className="text-xl lg:text-2xl font-medium text-white mb-6">
-              {data.hero.subtitle}
-            </p>
-            <p className="text-lg text-white leading-relaxed max-w-3xl mx-auto mb-8">
-              {data.hero.description}
-            </p>
+		// Hàm cập nhật nội dung
+		const updateContent = (product: any, index: any) => {
+			if (currentProductIndex === index) return;
 
-            {/* Stats */}
-            <div className="grid md:grid-cols-3 gap-8 mt-12">
-              {data.stats.map((stat, index) => {
-                const IconComponent = stat.icon;
-                return (
-                  <div key={index} className="text-center">
-                    <div className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full mb-4">
-                      <IconComponent className="w-8 h-8 text-white" />
-                    </div>
-                    <div className="text-3xl font-bold text-white mb-2">
-                      {stat.value}
-                    </div>
-                    <p className="text-white">{stat.label}</p>
-                  </div>
-                );
-              })}
-            </div>
-          </div>
-        </div>
-      </section>
+			setCurrentProductIndex(index);
+			const tl = gsap.timeline();
 
-      {/* Featured Products Section */}
-      <section className="py-10 lg:py-16 bg-white">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">
-              Sản Phẩm Nổi Bật
-            </h2>
-            <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-              Các giải pháp công nghệ hàng đầu được tin dùng bởi hàng trăm tổ
-              chức giáo dục
-            </p>
-          </div>
+			// Fade out current content
+			tl.to([title, desc, button, robot], {
+				opacity: 0,
+				y: 20,
+				duration: 0.3,
+				stagger: 0.05,
+			})
+				// Update content và fade in
+				.call(() => {
+					// Cập nhật title
+					title.textContent = product.title;
+					title.style.color = product.titleColor;
 
-          {/* Products Grid */}
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {data.featuredProducts.map((product, index) => (
-              <div
-                key={product.id}
-                className="group bg-white rounded-2xl border border-gray-200 shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden hover:-translate-y-2 flex flex-col h-full"
-              >
-                {/* Product Header */}
-                <div
-                  className={`h-32 bg-gradient-to-r ${product.color} relative overflow-hidden flex-shrink-0`}
-                >
-                  <div className="absolute inset-0 bg-black/10"></div>
-                  <div className="absolute inset-0 flex items-center justify-center">
-                    <span className="text-6xl opacity-20">{product.icon}</span>
-                  </div>
-                  <div className="absolute top-4 right-4">
-                    <span className="text-3xl">{product.icon}</span>
-                  </div>
-                </div>
+					// Cập nhật description
+					desc.textContent = product.description;
 
-                {/* Product Content */}
-                <div className="p-6 flex flex-col flex-1">
-                  <h3 className="text-xl font-bold text-gray-900 mb-3 group-hover:text-blue-600 transition-colors">
-                    {product.title}
-                  </h3>
-                  <p className="text-gray-600 leading-relaxed mb-4">
-                    {product.description}
-                  </p>
+					// Cập nhật button
+					const buttonSpan = button.querySelector('span');
+					if (buttonSpan) buttonSpan.textContent = product.buttonText;
+					button.href = product.buttonLink;
 
-                  {/* Features List - This will expand to fill available space */}
-                  <div className="space-y-2 mb-6 flex-1">
-                    {product.features.map((feature, idx) => (
-                      <div
-                        key={idx}
-                        className="flex items-center text-sm text-gray-600"
-                      >
-                        <CheckCircle className="w-4 h-4 text-green-500 mr-2 flex-shrink-0" />
-                        <span>{feature}</span>
-                      </div>
-                    ))}
-                  </div>
+					// Cập nhật image
+					const img = robot.querySelector('img');
+					if (img) {
+						img.src = product.image;
+						img.alt = product.title;
+					}
 
-                  {/* CTA Button - This will always be at the bottom */}
-                  <a
-                    href={product.link}
-                    className="inline-flex items-center w-full justify-center px-4 py-3 bg-gradient-to-r from-blue-600 to-purple-600 text-white font-semibold rounded-lg hover:from-blue-700 hover:to-purple-700 transition-all duration-300 group mt-auto"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    Xem thêm
-                    <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
-                  </a>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+					// Cập nhật progress indicator
+					updateProgressIndicator(index);
+				})
+				.to([title, desc, button, robot], {
+					opacity: 1,
+					y: 0,
+					duration: 0.4,
+					stagger: 0.05,
+					ease: 'back.out(1.7)',
+				});
+		};
 
-      {/* Customers Section */}
-      <div className="relative py-8 lg:py-16 overflow-hidden bg-white">
-        <div className="relative z-10 container-lg mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="absolute inset-0">
-            <Image
-              src="/images/backgrounds/khach-hang-tieu-bieu-background.png"
-              alt="background"
-              fill
-              className="object-cover rounded-xl"
-            />
-          </div>
-          <div className="py-6">
-            {/* Header */}
-            <div className="text-center mb-8">
-              <div className="transform relative w-fit mx-auto">
-                <h2 className="text-2xl lg:text-3xl font-bold mb-1 uppercase text-[#19376B]">
-                  KHÁCH HÀNG TIÊU BIỂU
-                </h2>
-                <div className="w-full h-1 bg-[#19376B] rounded-full mx-auto mb-6" />
-              </div>
-            </div>
+		// Hàm cập nhật progress indicator
+		const updateProgressIndicator = (activeIndex: any) => {
+			const dots = progressRef.current?.querySelectorAll('.progress-dot');
+			dots?.forEach((dot: any, index: any) => {
+				if (index === activeIndex) {
+					dot.style.backgroundColor = products[activeIndex].titleColor;
+					dot.style.transform = 'scale(1.2)';
+					dot.style.borderColor = products[activeIndex].titleColor;
+				} else {
+					dot.style.backgroundColor = 'transparent';
+					dot.style.transform = 'scale(1)';
+					dot.style.borderColor = 'white';
+				}
+			});
+		};
 
-            {/* Logo Grid */}
-            <div className="grid grid-cols-6 gap-1 sm:gap-2 md:gap-4 lg:gap-6">
-              {schools.map((school) => (
-                <div
-                  key={school.id}
-                  className="flex items-center justify-center h-24 z-10 relative group"
-                >
-                  <div className="w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 lg:w-28 lg:h-28 rounded-full bg-white shadow-md border border-gray-200 flex items-center justify-center overflow-hidden hover:shadow-lg transition-all duration-300">
-                    <Image
-                      src={school.image}
-                      alt={`Logo school ${school.id}`}
-                      width={120}
-                      height={120}
-                      className="w-auto h-auto object-contain opacity-70 transition-all duration-300 hover:opacity-100 hover:scale-[1.07] transform"
-                      title={school.name}
-                    />
-                  </div>
-                  {/* Tooltip */}
-                  <div className="absolute -top-10 left-1/2 transform -translate-x-1/2 bg-gray-800 text-white text-xs rounded py-1 px-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap">
-                    {school.name}
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  );
+		// Event handler cho wheel event trong container
+		const handleWheel: any = (e: any) => {
+			const direction = e.deltaY > 0 ? 1 : -1;
+			const newIndex = currentProductIndex + direction;
+
+			// Kiểm tra xem có thể chuyển đổi product không
+			const canChangeProduct = newIndex >= 0 && newIndex < products.length;
+
+			if (canChangeProduct) {
+				// Có thể thay đổi product -> ngăn scroll page và thay đổi content
+				e.preventDefault();
+
+				// Throttle để tránh scroll quá nhanh
+				if (handleWheel.timeout) return;
+				handleWheel.timeout = setTimeout(() => {
+					handleWheel.timeout = null;
+				}, 300);
+
+				updateContent(products[newIndex], newIndex);
+			}
+			// Nếu không thể thay đổi product (đã ở đầu/cuối) -> cho phép scroll page bình thường
+			// Không gọi e.preventDefault() -> page sẽ scroll
+		};
+
+		// Thêm event listener cho container
+		if (container) {
+			container.addEventListener('wheel', handleWheel, { passive: false });
+		}
+
+		// Animation ban đầu
+		gsap.fromTo(
+			[title, desc, button],
+			{
+				opacity: 0,
+				y: 50,
+			},
+			{
+				opacity: 1,
+				y: 0,
+				duration: 1,
+				stagger: 0.2,
+				ease: 'power2.out',
+			}
+		);
+
+		gsap.fromTo(
+			robot,
+			{
+				opacity: 0,
+				x: 100,
+				rotation: 10,
+			},
+			{
+				opacity: 1,
+				x: 0,
+				rotation: 0,
+				duration: 1.2,
+				delay: 0.5,
+				ease: 'elastic.out(1, 0.5)',
+			}
+		);
+
+		// Khởi tạo progress indicator
+		updateProgressIndicator(0);
+
+		// Cleanup
+		return () => {
+			if (container) {
+				container.removeEventListener('wheel', handleWheel);
+			}
+			ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
+		};
+	}, [currentProductIndex]);
+
+	// Handle keyboard navigation
+	useEffect(() => {
+		const handleKeyDown = (e: any) => {
+			if (e.key === 'ArrowDown' || e.key === 'ArrowRight') {
+				const newIndex = Math.min(products.length - 1, currentProductIndex + 1);
+				if (newIndex !== currentProductIndex) {
+					setCurrentProductIndex(newIndex);
+				}
+			} else if (e.key === 'ArrowUp' || e.key === 'ArrowLeft') {
+				const newIndex = Math.max(0, currentProductIndex - 1);
+				if (newIndex !== currentProductIndex) {
+					setCurrentProductIndex(newIndex);
+				}
+			}
+		};
+
+		window.addEventListener('keydown', handleKeyDown);
+		return () => window.removeEventListener('keydown', handleKeyDown);
+	}, [currentProductIndex]);
+
+	return (
+		<div className='min-h-screen bg-white'>
+			{/* Hero Section */}
+			<section className='relative flex items-center justify-center flex-col gap-4 pt-8 w-full'>
+				<div className='relative w-full flex justify-center px-4'>
+					{/* Map Container */}
+					<div className='relative'>
+						<Image
+							src='/images/map.png'
+							width={1200}
+							height={1000}
+							alt='map'
+							className='w-40 h-72 sm:w-44 sm:h-80 md:w-48 md:h-88 lg:w-52 lg:h-96 mx-auto'
+						/>
+
+						{/* Left Side Stats - Stacked on mobile */}
+						<div className='absolute hidden top-1/4 left-0 lg:-left-40 flex-col lg:block space-y-2 lg:space-y-0'>
+							<div className='flex items-center gap-1 sm:gap-2 text-xs sm:text-sm lg:text-base'>
+								<CountUp
+									from={0}
+									to={1700}
+									separator=','
+									direction='up'
+									duration={1}
+									className='count-up-text text-[#19376B] font-bold'
+								/>
+								<span className='text-[#386DC8] font-bold whitespace-nowrap'>TRƯỜNG HỌC</span>
+							</div>
+						</div>
+
+						<div className='absolute hidden top-[38%] left-0 lg:-left-32 flex-col lg:block space-y-2 lg:space-y-0'>
+							<div className='flex items-center gap-1 sm:gap-2 text-xs sm:text-sm lg:text-base'>
+								<CountUp
+									from={0}
+									to={120000}
+									separator=','
+									direction='up'
+									duration={1}
+									className='count-up-text text-[#19376B] font-bold'
+								/>
+								<span className='text-[#386DC8] font-bold whitespace-nowrap'>GIÁO VIÊN</span>
+							</div>
+						</div>
+
+						<div className='absolute hidden top-1/2 left-0 lg:-left-20 flex-col lg:block space-y-2 lg:space-y-0'>
+							<div className='flex items-center gap-1 sm:gap-2 text-xs sm:text-sm lg:text-base'>
+								<CountUp
+									from={0}
+									to={100000}
+									separator=','
+									direction='up'
+									duration={1}
+									className='count-up-text text-[#19376B] font-bold'
+								/>
+								<span className='text-[#386DC8] font-bold whitespace-nowrap'>GB LƯU TRỮ</span>
+							</div>
+						</div>
+
+						<div className='absolute hidden top-[62%] left-0 lg:-left-36 flex-col lg:block space-y-2 lg:space-y-0'>
+							<div className='flex items-center gap-1 sm:gap-2 text-xs sm:text-sm lg:text-base'>
+								<CountUp
+									from={0}
+									to={1000000}
+									separator=','
+									direction='up'
+									duration={1}
+									className='count-up-text text-[#19376B] font-bold'
+								/>
+								<span className='text-[#386DC8] font-bold whitespace-nowrap'>HỌC SINH</span>
+							</div>
+						</div>
+
+						{/* Right Side Stats - Stacked on mobile */}
+						<div className='absolute hidden top-[15%] right-0 lg:-right-20 flex-col lg:block space-y-2 lg:space-y-0'>
+							<div className='flex items-center gap-1 sm:gap-2 text-xs sm:text-sm lg:text-base justify-end lg:justify-start'>
+								<CountUp
+									from={0}
+									to={25}
+									separator=','
+									direction='up'
+									duration={1}
+									className='count-up-text text-[#19376B] font-bold'
+								/>
+								<span className='text-[#386DC8] font-bold whitespace-nowrap'>SỞ GD&ĐT</span>
+							</div>
+						</div>
+
+						<div className='absolute hidden top-[28%] right-0 lg:-right-32 flex-col lg:block space-y-2 lg:space-y-0'>
+							<div className='flex items-center gap-1 sm:gap-2 text-xs sm:text-sm lg:text-base justify-end lg:justify-start'>
+								<CountUp
+									from={0}
+									to={546}
+									separator=','
+									direction='up'
+									duration={1}
+									className='count-up-text text-[#19376B] font-bold'
+								/>
+								<span className='text-[#386DC8] font-bold whitespace-nowrap'>TRƯỜNG TIỂU HỌC</span>
+							</div>
+						</div>
+
+						<div className='absolute hidden top-[40%] right-0 lg:-right-40 flex-col lg:block space-y-2 lg:space-y-0'>
+							<div className='flex items-center gap-1 sm:gap-2 text-xs sm:text-sm lg:text-base justify-end lg:justify-start'>
+								<CountUp
+									from={0}
+									to={519}
+									separator=','
+									direction='up'
+									duration={1}
+									className='count-up-text text-[#19376B] font-bold'
+								/>
+								<span className='text-[#386DC8] font-bold whitespace-nowrap'>TRƯỜNG THCS</span>
+							</div>
+						</div>
+
+						<div className='absolute hidden top-[52%] right-0 lg:-right-36 flex-col lg:block space-y-2 lg:space-y-0'>
+							<div className='flex items-center gap-1 sm:gap-2 text-xs sm:text-sm lg:text-base justify-end lg:justify-start'>
+								<CountUp
+									from={0}
+									to={395}
+									separator=','
+									direction='up'
+									duration={1}
+									className='count-up-text text-[#19376B] font-bold'
+								/>
+								<span className='text-[#386DC8] font-bold whitespace-nowrap'>TRƯỜNG THPT</span>
+							</div>
+						</div>
+
+						<div className='absolute hidden top-[66%] right-0 lg:-right-48 flex-col lg:block space-y-2 lg:space-y-0'>
+							<div className='flex items-center gap-1 sm:gap-2 text-xs sm:text-sm lg:text-base justify-end lg:justify-start'>
+								<CountUp
+									from={0}
+									to={256}
+									separator=','
+									direction='up'
+									duration={1}
+									className='count-up-text text-[#19376B] font-bold'
+								/>
+								<span className='text-[#386DC8] font-bold whitespace-nowrap'>ĐƠN VỊ GD KHÁC</span>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				{/* Mobile Alternative Layout - Grid below map */}
+				<div className='block lg:hidden w-full px-4 mt-6'>
+					<div className='grid grid-cols-2 gap-3 max-w-md mx-auto'>
+						<div className='text-center p-3 bg-blue-50 rounded-lg'>
+							<CountUp
+								from={0}
+								to={1700}
+								separator=','
+								direction='up'
+								duration={1}
+								className='count-up-text text-[#19376B] text-lg font-bold block'
+							/>
+							<span className='text-[#386DC8] font-bold text-xs'>TRƯỜNG HỌC</span>
+						</div>
+						<div className='text-center p-3 bg-blue-50 rounded-lg'>
+							<CountUp
+								from={0}
+								to={120000}
+								separator=','
+								direction='up'
+								duration={1}
+								className='count-up-text text-[#19376B] text-lg font-bold block'
+							/>
+							<span className='text-[#386DC8] font-bold text-xs'>GIÁO VIÊN</span>
+						</div>
+						<div className='text-center p-3 bg-blue-50 rounded-lg'>
+							<CountUp
+								from={0}
+								to={100000}
+								separator=','
+								direction='up'
+								duration={1}
+								className='count-up-text text-[#19376B] text-lg font-bold block'
+							/>
+							<span className='text-[#386DC8] font-bold text-xs'>GB LƯU TRỮ</span>
+						</div>
+						<div className='text-center p-3 bg-blue-50 rounded-lg'>
+							<CountUp
+								from={0}
+								to={1000000}
+								separator=','
+								direction='up'
+								duration={1}
+								className='count-up-text text-[#19376B] text-lg font-bold block'
+							/>
+							<span className='text-[#386DC8] font-bold text-xs'>HỌC SINH</span>
+						</div>
+						<div className='text-center p-3 bg-blue-50 rounded-lg'>
+							<CountUp
+								from={0}
+								to={25}
+								separator=','
+								direction='up'
+								duration={1}
+								className='count-up-text text-[#19376B] text-lg font-bold block'
+							/>
+							<span className='text-[#386DC8] font-bold text-xs'>SỞ GD&ĐT</span>
+						</div>
+						<div className='text-center p-3 bg-blue-50 rounded-lg'>
+							<CountUp
+								from={0}
+								to={546}
+								separator=','
+								direction='up'
+								duration={1}
+								className='count-up-text text-[#19376B] text-lg font-bold block'
+							/>
+							<span className='text-[#386DC8] font-bold text-xs'>TRƯỜNG TIỂU HỌC</span>
+						</div>
+						<div className='text-center p-3 bg-blue-50 rounded-lg'>
+							<CountUp
+								from={0}
+								to={519}
+								separator=','
+								direction='up'
+								duration={1}
+								className='count-up-text text-[#19376B] text-lg font-bold block'
+							/>
+							<span className='text-[#386DC8] font-bold text-xs'>TRƯỜNG THCS</span>
+						</div>
+						<div className='text-center p-3 bg-blue-50 rounded-lg'>
+							<CountUp
+								from={0}
+								to={395}
+								separator=','
+								direction='up'
+								duration={1}
+								className='count-up-text text-[#19376B] text-lg font-bold block'
+							/>
+							<span className='text-[#386DC8] font-bold text-xs'>TRƯỜNG THPT</span>
+						</div>
+						<div className='text-center p-3 bg-blue-50 rounded-lg col-span-2'>
+							<CountUp
+								from={0}
+								to={256}
+								separator=','
+								direction='up'
+								duration={1}
+								className='count-up-text text-[#19376B] text-lg font-bold block'
+							/>
+							<span className='text-[#386DC8] font-bold text-xs'>ĐƠN VỊ GD KHÁC</span>
+						</div>
+					</div>
+				</div>
+			</section>
+
+			{/* Featured Products Section */}
+			<div className={`text-center transform transition-all py-8 lg:py-16 duration-1000`}>
+				<div className='relative inline-block'>
+					<div className='flex flex-col items-center justify-center'>
+						<h2 className='text-2xl lg:text-3xl xl:text-4xl font-bold text-[#666] leading-tight'>
+							Khi <span className='text-blue-600'>công nghệ</span> trở thành{' '}
+							<span className='text-blue-600'>người bạn đồng hành</span> của giáo dục
+						</h2>
+					</div>
+
+					<div className='mt-6 px-4'>
+						<p className='text-lg lg:text-xl text-[#666] leading-relaxed max-w-3xl mx-auto'>
+							Chúng tôi phát triển hệ sinh thái các giải pháp công nghệ giáo dục toàn diện,
+							<br className='hidden lg:block' />
+							đáp ứng mọi nhu cầu của nhà trường
+						</p>
+					</div>
+				</div>
+			</div>
+
+			<div ref={containerRef}>
+				<div className='container-lg'>
+					<div className='relative h-[350px] sm:h-[450px] lg:h-[546px] overflow-hidden mx-auto cursor-pointer group rounded-2xl p-4'>
+						{/* Background Image */}
+						<Image
+							src='/images/bg-product.png'
+							width={1200}
+							height={1000}
+							alt='bg-product'
+							className='absolute inset-0 w-full h-full z-0 object-cover'
+						/>
+
+						{/* Content Container */}
+						<div className='flex flex-col lg:flex-row items-center z-10 relative justify-between h-full px-4 sm:px-6 lg:px-8'>
+							<div className='flex flex-col gap-3 sm:gap-4 lg:gap-6 max-w-2xl text-center lg:text-center items-center lg:items-center px-4 sm:px-8 lg:px-16 order-2 lg:order-1'>
+								<h3
+									ref={titleRef}
+									className='text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold transition-all duration-500 leading-tight'
+									style={{ color: products[currentProductIndex].titleColor }}
+								>
+									{products[currentProductIndex].title}
+								</h3>
+								<p
+									ref={descRef}
+									className='text-white transition-all duration-500 text-sm sm:text-base lg:text-base leading-relaxed'
+								>
+									{products[currentProductIndex].description}
+								</p>
+								<Link
+									ref={buttonRef}
+									href={products[currentProductIndex].buttonLink}
+									className='group w-fit flex items-center justify-center gap-2 px-3 sm:px-4 md:px-6 py-2 sm:py-2.5 md:py-3 bg-[#DDEFFB] text-[#19376B] font-semibold rounded-full hover:bg-blue-600 hover:text-white transition-all duration-300 shadow-lg hover:shadow-xl text-xs sm:text-sm md:text-base'
+								>
+									<svg
+										xmlns='http://www.w3.org/2000/svg'
+										width={20}
+										height={20}
+										viewBox='0 0 20 20'
+										fill='none'
+										className='transition-all duration-300 w-4 h-4 sm:w-5 sm:h-5 md:w-5 md:h-5'
+									>
+										<path
+											d='M16.666 6.66663H3.33268V4.99996H16.666V6.66663ZM14.9993 1.66663H4.99935V3.33329H14.9993V1.66663ZM18.3327 9.99996V16.6666C18.3327 17.1087 18.1571 17.5326 17.8445 17.8451C17.532 18.1577 17.108 18.3333 16.666 18.3333H3.33268C2.89106 18.332 2.4679 18.156 2.15563 17.8437C1.84335 17.5314 1.66733 17.1082 1.66602 16.6666V9.99996C1.66733 9.55834 1.84335 9.13518 2.15563 8.82291C2.4679 8.51063 2.89106 8.33461 3.33268 8.33329H16.666C17.1076 8.33461 17.5308 8.51063 17.8431 8.82291C18.1553 9.13518 18.3314 9.55834 18.3327 9.99996ZM11.6052 14.2016L13.541 12.5466L10.9918 12.3333L9.99935 9.99996L9.00685 12.3333L6.45768 12.5466L8.39352 14.2016L7.81018 16.6666L9.99935 15.3566L12.1885 16.6666L11.6052 14.2016Z'
+											fill='#19376B'
+											className='group-hover:fill-white transition-all duration-300'
+										/>
+									</svg>
+									<span>{products[currentProductIndex].buttonText}</span>
+								</Link>
+							</div>
+							<div ref={robotRef} className='flex-shrink-0 order-1 lg:order-2 mb-3 sm:mb-4 lg:mb-0'>
+								<Image
+									src={products[currentProductIndex].image}
+									width={478}
+									height={478}
+									alt={products[currentProductIndex].title}
+									className='drop-shadow-2xl transition-all duration-500 w-28 h-28 sm:w-36 sm:h-36 md:w-52 md:h-52 lg:w-[478px] lg:h-[478px] object-contain'
+								/>
+							</div>
+						</div>
+
+						{/* Scroll Hint */}
+						<div className='hidden lg:flex absolute bottom-4 left-1/2 transform -translate-x-1/2 text-white/70 text-sm items-center gap-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300'>
+							<div className='w-6 h-10 border-2 border-white/50 rounded-full flex justify-center'>
+								<div className='w-1 h-3 bg-white/70 rounded-full mt-2 animate-bounce'></div>
+							</div>
+							<span>Cuộn chuột để xem sản phẩm khác</span>
+						</div>
+
+						{/* Frame Border Effect */}
+						<div className='absolute inset-0 pointer-events-none z-20 rounded-2xl border-2 border-white/10'></div>
+					</div>
+				</div>
+			</div>
+
+			{/* Customers Section - Scroll bình thường */}
+			<div className='relative py-8 lg:py-16 overflow-hidden bg-white'>
+				<div className='relative z-10 container-lg mx-auto px-4 sm:px-6 lg:px-8'>
+					<div className='absolute inset-0'>
+						<Image
+							src='/images/backgrounds/khach-hang-tieu-bieu-background.png'
+							alt='background'
+							fill
+							className='object-cover rounded-xl'
+						/>
+					</div>
+					<div className='py-6'>
+						{/* Header */}
+						<div className='text-center mb-8'>
+							<div className='transform relative w-fit mx-auto'>
+								<h2 className='text-2xl lg:text-3xl font-bold mb-1 uppercase text-[#19376B]'>
+									KHÁCH HÀNG TIÊU BIỂU
+								</h2>
+								<div className='w-full h-1 bg-[#19376B] rounded-full mx-auto mb-6' />
+							</div>
+						</div>
+
+						{/* Logo Grid */}
+						<div className='grid grid-cols-6 gap-1 sm:gap-2 md:gap-4 lg:gap-6'>
+							{data.map((school: any) => (
+								<div
+									key={school.id}
+									className='flex items-center justify-center h-24 z-10 relative group'
+								>
+									<div className='w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 lg:w-28 lg:h-28 rounded-full bg-white shadow-md border border-gray-200 flex items-center justify-center overflow-hidden hover:shadow-lg transition-all duration-300'>
+										<Image
+											src={school.image}
+											alt={`Logo school ${school.id}`}
+											width={120}
+											height={120}
+											className='w-auto h-auto object-contain opacity-70 transition-all duration-300 hover:opacity-100 hover:scale-[1.07] transform'
+											title={school.name}
+										/>
+									</div>
+									{/* Tooltip */}
+									<div className='absolute -top-10 left-1/2 transform -translate-x-1/2 bg-gray-800 text-white text-xs rounded py-1 px-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap'>
+										{school.name}
+									</div>
+								</div>
+							))}
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<CarouselCards />
+		</div>
+	);
 };
 
 export default ProductPage;

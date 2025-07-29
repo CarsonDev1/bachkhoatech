@@ -13,9 +13,9 @@ const Header = () => {
 	const pathname = usePathname();
 
 	const navItems = [
+		{ name: 'GIỚI THIỆU', href: '/about' },
 		{ name: 'SẢN PHẨM', href: '/product' },
-		{ name: 'KHÁCH HÀNG', href: '/customer' },
-		{ name: 'TIN TỨC - TUYỂN DỤNG', href: '/news' },
+		{ name: 'TIN TỨC - TUYỂN DỤNG', href: 'https://tintuc.lms360.vn/', external: true },
 		{ name: 'ĐÀO TẠO NHÂN LỰC SỐ', href: '/training' },
 		{ name: 'LIÊN HỆ', href: '/contact' },
 	];
@@ -50,8 +50,8 @@ const Header = () => {
 	return (
 		<>
 			<header
-				className={`fixed w-full top-0 left-0 right-0 z-40 transition-all duration-300  border-b border-white/10 ${
-					scrolled ? 'bg-slate-600 bg-opacity-80 backdrop-blur-sm shadow-lg' : 'bg-transparent'
+				className={`sticky w-full top-0 left-0 right-0 z-40 transition-all duration-300  border-b border-white/10 ${
+					scrolled ? 'bg-slate-600 bg-opacity-80 backdrop-blur-sm shadow-lg' : 'bg-slate-500 bg-opacity-90'
 				}`}
 			>
 				{/* Background particles */}
@@ -97,6 +97,8 @@ const Header = () => {
 									<Link
 										key={item.name}
 										href={item.href}
+										target={item.external ? '_blank' : undefined}
+										rel={item.external ? 'noopener noreferrer' : undefined}
 										className={`relative text-sm md:text-base font-medium transition-all duration-300 hover:text-blue-200 ${
 											isActive ? 'text-white' : 'text-blue-100'
 										}`}
@@ -204,6 +206,8 @@ const Header = () => {
 										<Link
 											key={item.name}
 											href={item.href}
+											target={item.external ? '_blank' : undefined}
+											rel={item.external ? 'noopener noreferrer' : undefined}
 											onClick={closeMenu}
 											className={`block w-full px-4 py-3 rounded-lg text-left transition-all duration-300 ${
 												isActive

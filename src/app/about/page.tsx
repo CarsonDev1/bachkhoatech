@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import Image from 'next/image';
 import { CheckCircle, Users, Globe, BookOpen, Zap, Star, TrendingUp, Award, ArrowRight } from 'lucide-react';
 import { Metadata } from 'next';
@@ -107,8 +107,10 @@ const AboutPage = async () => {
 		<div className='min-h-screen bg-white'>
 			{/* Hero Section */}
 			<section className='relative py-10 lg:py-16 overflow-hidden'>
-				<div className='absolute inset-0 bg-slate-800'></div>
-				<div className='container-lg relative z-10'>
+				<video autoPlay loop muted playsInline className='absolute inset-0 w-full h-full object-cover z-10'>
+					<source src='/videos/banner.mp4' type='video/mp4' />
+				</video>
+				<div className='container-lg relative z-20'>
 					<div className='text-center max-w-4xl mx-auto text-white'>
 						<h1 className='text-2xl lg:text-3xl font-black mb-8'>{data.hero.title}</h1>
 						<div className='flex justify-center mb-12'>
